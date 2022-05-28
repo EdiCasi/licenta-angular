@@ -8,11 +8,15 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
 
- private apiServerUrl=environment.apiBaseUrl;
+ private apiServerUrl=environment.apiBaseUrl+'/account';
 
   constructor(private http: HttpClient) { }
 
   public getAccounts(): Observable<Account[]>{
-    return this.http.get<Account[]>(`${this.apiServerUrl}/account/all`);
+    return this.http.get<Account[]>(`${this.apiServerUrl}/all`);
+  }
+
+  public loginUser(user: any): Observable<Account>{
+    return this.http.post<Account>(`${this.apiServerUrl}/login`, user);
   }
 }
