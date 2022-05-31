@@ -1,50 +1,53 @@
-.main-div mat-card{
-    height: fit-content;
-    height: 45%;
+.main-div mat-card {
+  height: fit-content;
+  height: 35%;
 }
-mat-error{
-    padding-bottom: 20px;
-}
-
-.error-placeholder{
-    color:red;
-}
-.login-form{
-    padding-top: 20px;
+mat-error {
+  padding-bottom: 20px;
 }
 
-.forgor-password{
-    padding-top: 20px;
-    padding-bottom: 10px;
-    text-align: right;
+.error-placeholder {
+  color: red;
 }
-#loading{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 1;
-    margin: -35px 0 0 -45px;
-    border: 10px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 10px solid #3498db;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
+.login-form {
+  padding-top: 20px;
 }
-      
+
+.forgor-password {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+#loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -35px 0 0 -45px;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner_overlay {
-
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    opacity: 0.2;
-    z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.2;
+  z-index: 1;
 }
