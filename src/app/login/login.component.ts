@@ -39,6 +39,8 @@ export class LoginComponent {
         this.showLoading = false;
         console.log(response);
 
+        localStorage.setItem('user', JSON.stringify(response));
+
         this._router.navigate(['/home']);
       },
       (error: HttpErrorResponse) => {
