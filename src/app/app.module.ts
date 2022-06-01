@@ -18,6 +18,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { StudentGradesComponent } from './student-grades/student-grades.component';
+import { ChatComponent } from './chat/chat.component';
+import { StudentCalendarComponent } from './student-calendar/student-calendar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { HomePageComponent } from './home-page/home-page.component';
     LoginComponent,
     MenuComponent,
     HomePageComponent,
+    StudentCoursesComponent,
+    StudentGradesComponent,
+    ChatComponent,
+    StudentCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +40,11 @@ import { HomePageComponent } from './home-page/home-page.component';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
+      { path: 'home', component: HomePageComponent },
+      { path: 'calendar', component: StudentCalendarComponent },
+      { path: 'grades', component: StudentGradesComponent },
+      { path: 'courses', component: StudentCoursesComponent },
+      { path: 'chat', component: ChatComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,

@@ -1,0 +1,18 @@
+button {
+  margin: 1rem;
+  text-align: center;
+  padding: 60px 0;
+  font-size: 24px;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.container {
+  margin-left: 20%;
+  margin-right: 20%;
+}

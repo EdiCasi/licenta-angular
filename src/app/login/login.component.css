@@ -1,6 +1,5 @@
-.main-div mat-card {
+mat-card {
   height: fit-content;
-  height: 35%;
 }
 mat-error {
   padding-bottom: 20px;

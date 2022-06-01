@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   public emailNotGood;
   public loginData = { email: '', password: '' };
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private _router: Router) {
     this.showLoading = false;
     this.errorMessage = '';
     this.passwordNotGood = false;
@@ -27,27 +28,18 @@ export class LoginComponent {
   }
 
   public loginUser(): void {
-    if (!this.isEmailAddress(this.loginData.email)) {
-      this.emailNotGood = true;
-      this.errorMessage = 'Please enter a valid email.';
-      return;
-    }
-
-    if (!this.isPassword(this.loginData.password)) {
-      this.passwordNotGood = true;
-      this.errorMessage = 'Please enter a valid password.';
-      this.emailNotGood = false;
+    if (this.verifyUserInput(this.loginData.email)) {
       return;
     }
 
     this.showLoading = true;
 
-    console.log('===loginData: ' + JSON.stringify(this.loginData));
-
     this.accountService.loginUser(this.loginData).subscribe(
       (response: Account) => {
         this.showLoading = false;
         console.log(response);
+
+        this._router.navigate(['/home']);
       },
       (error: HttpErrorResponse) => {
         this.showLoading = false;
@@ -62,10 +54,25 @@ export class LoginComponent {
           this.passwordNotGood = false;
           this.emailNotGood = false;
         }
-
         console.log(' === ERRORR: ' + JSON.stringify(error));
       }
     );
+  }
+
+  public verifyUserInput(loginData: any): Boolean {
+    if (!this.isEmailAddress(this.loginData.email)) {
+      this.emailNotGood = true;
+      this.errorMessage = 'Please enter a valid email.';
+      return true;
+    }
+
+    // if (!this.isPassword(this.loginData.password)) {
+    //   this.passwordNotGood = true;
+    //   this.errorMessage = 'Please enter a valid password.';
+    //   this.emailNotGood = false;
+    //   return true;
+    // }
+    return false;
   }
 
   public isEmailAddress(email: string) {
