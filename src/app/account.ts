@@ -1,7 +1,7 @@
 export interface Account {
-    id: number;
-    userName: string;
-    password: string;
-    email: string;
-    userType: string;
+  id: number;
+  userName: string;
+  password: string;
+  email: string;
+  userType: string;
 }

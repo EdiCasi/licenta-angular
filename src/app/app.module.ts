@@ -22,6 +22,7 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { StudentGradesComponent } from './student-grades/student-grades.component';
 import { ChatComponent } from './chat/chat.component';
 import { StudentCalendarComponent } from './student-calendar/student-calendar.component';
+import { CourseService } from './course.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { StudentCalendarComponent } from './student-calendar/student-calendar.co
     FormsModule,
     MatIconModule,
   ],
-  providers: [AccountService],
+  providers: [AccountService, CourseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

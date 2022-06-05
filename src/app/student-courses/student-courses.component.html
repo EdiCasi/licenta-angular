@@ -1,2 +1,9 @@
 <app-menu></app-menu>
+
 <p>student-courses works!</p>
+
+<div *ngFor="let course of studentCourses" class="container">
+  <div class="card-wrapper">
+    <button mat-raised-button>{{ course.courseName }}</button>
+  </div>
+</div>
