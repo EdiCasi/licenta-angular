@@ -20,9 +20,9 @@ import { MenuComponent } from './menu/menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentGradesComponent } from './student-grades/student-grades.component';
-import { ChatComponent } from './chat/chat.component';
 import { StudentCalendarComponent } from './student-calendar/student-calendar.component';
 import { CourseService } from './course.service';
+import { StudentCoursePageComponent } from './student-course-page/student-course-page.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { CourseService } from './course.service';
     HomePageComponent,
     StudentCoursesComponent,
     StudentGradesComponent,
-    ChatComponent,
     StudentCalendarComponent,
+    StudentCoursePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +44,8 @@ import { CourseService } from './course.service';
       { path: 'home', component: HomePageComponent },
       { path: 'calendar', component: StudentCalendarComponent },
       { path: 'grades', component: StudentGradesComponent },
-      { path: 'courses', component: StudentCoursesComponent },
-      { path: 'chat', component: ChatComponent },
+      { path: 'studentCourses', component: StudentCoursesComponent },
+      { path: 'studentCoursePage', component: StudentCoursePageComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,

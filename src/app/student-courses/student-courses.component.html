@@ -4,6 +4,14 @@
 
 <div *ngFor="let course of studentCourses" class="container">
   <div class="card-wrapper">
-    <button mat-raised-button>{{ course.courseName }}</button>
+    <button
+      mat-raised-button
+      [routerLink]="[
+        '/studentCoursePage',
+        { courseId: course.id, courseName: course.courseName }
+      ]"
+    >
+      {{ course.courseName }}
+    </button>
   </div>
 </div>
