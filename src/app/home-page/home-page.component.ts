@@ -8,6 +8,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
+  professorType: string = 'proffesor';
+  studentType: string = 'student';
+  adminType: string = 'admin';
   public loggedUser: Account | null = null;
 
   constructor(private auth: AuthService) {}

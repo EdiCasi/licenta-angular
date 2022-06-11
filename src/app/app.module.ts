@@ -15,6 +15,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -23,6 +26,9 @@ import { StudentGradesComponent } from './student-grades/student-grades.componen
 import { StudentCalendarComponent } from './student-calendar/student-calendar.component';
 import { CourseService } from './course.service';
 import { StudentCoursePageComponent } from './student-course-page/student-course-page.component';
+import { ProfessorsComponent } from './professors/professors.component';
+import { EditProfessorPopUpComponent } from './edit-professor-pop-up/edit-professor-pop-up.component';
+import { DeleteProfessorPopUpComponent } from './delete-professor-pop-up/delete-professor-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,9 @@ import { StudentCoursePageComponent } from './student-course-page/student-course
     StudentGradesComponent,
     StudentCalendarComponent,
     StudentCoursePageComponent,
+    ProfessorsComponent,
+    EditProfessorPopUpComponent,
+    DeleteProfessorPopUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +55,7 @@ import { StudentCoursePageComponent } from './student-course-page/student-course
       { path: 'grades', component: StudentGradesComponent },
       { path: 'studentCourses', component: StudentCoursesComponent },
       { path: 'studentCoursePage', component: StudentCoursePageComponent },
+      { path: 'professors', component: ProfessorsComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,
@@ -54,8 +64,11 @@ import { StudentCoursePageComponent } from './student-course-page/student-course
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatPaginatorModule,
     FormsModule,
     MatIconModule,
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [AccountService, CourseService],
   bootstrap: [AppComponent],

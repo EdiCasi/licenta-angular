@@ -18,4 +18,20 @@ export class AccountService {
   public loginUser(user: any): Observable<Account> {
     return this.http.post<Account>(`${this.apiServerUrl}/login`, user);
   }
+
+  public getAllProfessors(): Observable<Account[]> {
+    return this.http.get<Account[]>(`${this.apiServerUrl}/getAllProfessors`);
+  }
+  public getAllStudents(): Observable<Account[]> {
+    return this.http.get<Account[]>(`${this.apiServerUrl}/getAllStudents`);
+  }
+  public updateUser(user: Account): Observable<Account> {
+    return this.http.put<Account>(`${this.apiServerUrl}/update`, user);
+  }
+  public addUser(user: Account): Observable<Account> {
+    return this.http.post<Account>(`${this.apiServerUrl}/add`, user);
+  }
+  public deleteUser(userId: Number): Observable<any> {
+    return this.http.delete<Account>(`${this.apiServerUrl}/delete/${userId}`);
+  }
 }

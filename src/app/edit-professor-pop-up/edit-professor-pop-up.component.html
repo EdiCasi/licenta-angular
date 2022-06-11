@@ -1,0 +1,40 @@
+<div class="popUp">
+  <h1 mat-dialog-title>
+    Now you are editing professor: {{ proffesorToModify.userName }}
+  </h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" class="editFields">
+      <mat-label>Name: </mat-label>
+      <input
+        matInput
+        [(ngModel)]="proffesorToModify.userName"
+        (input)="onInputChange($event)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="editFields">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="proffesorToModify.email"
+        (input)="onInputChange($event)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="editFields">
+      <mat-label>Password</mat-label>
+      <input matInput (input)="onPassInputChange($event)" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="submitButtons">
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button
+      mat-button
+      (click)="onOkClick()"
+      cdkFocusInitial
+      [disabled]="inputErrors"
+    >
+      Ok
+    </button>
+  </div>
+</div>
