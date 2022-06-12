@@ -22,9 +22,7 @@ export class AccountService {
   public getAllProfessors(): Observable<Account[]> {
     return this.http.get<Account[]>(`${this.apiServerUrl}/getAllProfessors`);
   }
-  public getAllStudents(): Observable<Account[]> {
-    return this.http.get<Account[]>(`${this.apiServerUrl}/getAllStudents`);
-  }
+
   public updateUser(user: Account): Observable<Account> {
     return this.http.put<Account>(`${this.apiServerUrl}/update`, user);
   }
@@ -33,5 +31,11 @@ export class AccountService {
   }
   public deleteUser(userId: Number): Observable<any> {
     return this.http.delete<Account>(`${this.apiServerUrl}/delete/${userId}`);
+  }
+
+  public getAllStudentsFromAGroup(groupId: Number): Observable<Account[]> {
+    return this.http.get<Account[]>(
+      `${this.apiServerUrl}/groupStudents/${groupId}`
+    );
   }
 }

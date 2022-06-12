@@ -27,8 +27,12 @@ import { StudentCalendarComponent } from './student-calendar/student-calendar.co
 import { CourseService } from './course.service';
 import { StudentCoursePageComponent } from './student-course-page/student-course-page.component';
 import { ProfessorsComponent } from './professors/professors.component';
-import { EditProfessorPopUpComponent } from './edit-professor-pop-up/edit-professor-pop-up.component';
-import { DeleteProfessorPopUpComponent } from './delete-professor-pop-up/delete-professor-pop-up.component';
+import { EditAccountPopUpComponent } from './edit-account-pop-up/edit-account-pop-up.component';
+import { DeleteAccountPopUpComponent } from './delete-account-pop-up/delete-account-pop-up.component';
+import { StudentGroupsComponent } from './student-groups/student-groups.component';
+import { EditStudentGroupPopUpComponent } from './edit-student-group-pop-up/edit-student-group-pop-up.component';
+import { DeleteStudentGroupPopUpComponent } from './delete-student-group-pop-up/delete-student-group-pop-up.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +45,12 @@ import { DeleteProfessorPopUpComponent } from './delete-professor-pop-up/delete-
     StudentCalendarComponent,
     StudentCoursePageComponent,
     ProfessorsComponent,
-    EditProfessorPopUpComponent,
-    DeleteProfessorPopUpComponent,
+    EditAccountPopUpComponent,
+    DeleteAccountPopUpComponent,
+    StudentGroupsComponent,
+    EditStudentGroupPopUpComponent,
+    DeleteStudentGroupPopUpComponent,
+    StudentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +64,8 @@ import { DeleteProfessorPopUpComponent } from './delete-professor-pop-up/delete-
       { path: 'studentCourses', component: StudentCoursesComponent },
       { path: 'studentCoursePage', component: StudentCoursePageComponent },
       { path: 'professors', component: ProfessorsComponent },
+      { path: 'studentGroups', component: StudentGroupsComponent },
+      { path: 'students', component: StudentsComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,

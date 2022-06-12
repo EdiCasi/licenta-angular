@@ -1,0 +1,25 @@
+.container {
+  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.card-wrapper {
+  display: grid;
+}
+table {
+  width: 100%;
+  text-align: center !important;
+}
+th.mat-header-cell {
+  text-align: center !important;
+  width: 150px;
+}
+.addStudentGroupDiv {
+  width: 100%;
+  margin-top: 30px;
+}
+.addButton {
+  float: right;
+  margin-right: 20%;
+}

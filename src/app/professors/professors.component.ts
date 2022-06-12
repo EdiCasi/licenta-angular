@@ -4,8 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
-import { DeleteProfessorPopUpComponent } from '../delete-professor-pop-up/delete-professor-pop-up.component';
-import { EditProfessorPopUpComponent } from '../edit-professor-pop-up/edit-professor-pop-up.component';
+import { DeleteAccountPopUpComponent } from '../delete-account-pop-up/delete-account-pop-up.component';
+import { EditAccountPopUpComponent } from '../edit-account-pop-up/edit-account-pop-up.component';
 
 @Component({
   selector: 'app-professors',
@@ -39,7 +39,7 @@ export class ProfessorsComponent implements OnInit {
   }
 
   public openeEditProfessor(professor: Account) {
-    const dialogRef = this.dialog.open(EditProfessorPopUpComponent, {
+    const dialogRef = this.dialog.open(EditAccountPopUpComponent, {
       width: '400px',
       height: '400px',
       data: professor,
@@ -51,15 +51,30 @@ export class ProfessorsComponent implements OnInit {
         result != undefined &&
         JSON.stringify(professor) !== JSON.stringify(result)
       ) {
-        this.modifyProfessorInDatabase(result);
         Object.assign(professor, result);
       }
     });
   }
 
+  public openeAddProfessor() {
+    const dialogRef = this.dialog.open(EditAccountPopUpComponent, {
+      width: '400px',
+      height: '400px',
+      data: new Account('professor'),
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+
+      const tableData = this.dataSource.data;
+      tableData.push(result);
+      this.dataSource.data = tableData;
+    });
+  }
+
   // DELETE
   public openDeleteProfessor(professor: Account) {
-    const dialogRef = this.dialog.open(DeleteProfessorPopUpComponent, {
+    const dialogRef = this.dialog.open(DeleteAccountPopUpComponent, {
       width: '300px',
       height: '200px',
       data: professor,
@@ -68,74 +83,11 @@ export class ProfessorsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result == true) {
-        // DELETE PROFESSORS
-        this.deleteProfessorFromDatabase(professor);
-      }
-    });
-  }
-
-  private modifyProfessorInDatabase(professor: Account) {
-    this.accountService.updateUser(professor).subscribe(
-      (response: Account) => {
-        console.log('RESPONSE: ' + JSON.stringify(response));
-        alert(
-          'Profesorul: ' + response.userName + ' a fost modificat cu succes!'
-        );
-      },
-      (error: HttpErrorResponse) => {
-        console.log('==Error updating professors: ' + JSON.stringify(error));
-      }
-    );
-  }
-
-  public openeAddProfessor() {
-    const dialogRef = this.dialog.open(EditProfessorPopUpComponent, {
-      width: '400px',
-      height: '400px',
-      data: undefined,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      console.log('==RESULT: ' + JSON.stringify(result));
-
-      if (result != undefined) {
-        this.addProffesorInDatabase(result);
-      }
-    });
-  }
-
-  private addProffesorInDatabase(professor: Account) {
-    this.accountService.addUser(professor).subscribe(
-      (response: Account) => {
-        console.log('RESPONSE: ' + JSON.stringify(response));
-
-        const tableData = this.dataSource.data;
-        tableData.push(response);
-        this.dataSource.data = tableData;
-
-        alert(
-          'Profesorul: ' + response.userName + ' a fost adaugat cu succes!'
-        );
-      },
-      (error: HttpErrorResponse) => {
-        console.log('==Error adding professors: ' + JSON.stringify(error));
-      }
-    );
-  }
-  private deleteProfessorFromDatabase(professor: Account) {
-    this.accountService.deleteUser(professor.id).subscribe(
-      (response: any) => {
         const tableData = this.dataSource.data.filter(
           (item) => item !== professor
         );
         this.dataSource.data = tableData;
-
-        alert('Profesorul: ' + professor.userName + ' a fost sters cu succes!');
-      },
-      (error: HttpErrorResponse) => {
-        console.log('==Error adding professors: ' + JSON.stringify(error));
       }
-    );
+    });
   }
 }
