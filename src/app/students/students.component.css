@@ -23,8 +23,26 @@ th.mat-header-cell {
   float: right;
   margin-right: 20%;
 }
-.groupName {
+.tableHeaderForGroup {
   height: 30px;
   font-size: 22px;
   font-weight: bold;
+  margin-bottom: 20px;
+}
+.tableHeaderForSearch {
+  height: 30px;
+  margin-bottom: 40px;
+}
+
+.searchBar {
+  width: 100%;
+  border: 10px;
+  border-color: black;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
 }

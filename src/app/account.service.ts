@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Account } from './account';
 import { environment } from 'src/environments/environment';
+import { Student } from './student';
 @Injectable({
   providedIn: 'root',
 })
@@ -36,6 +37,15 @@ export class AccountService {
   public getAllStudentsFromAGroup(groupId: Number): Observable<Account[]> {
     return this.http.get<Account[]>(
       `${this.apiServerUrl}/groupStudents/${groupId}`
+    );
+  }
+
+  public getStudentWithGroupByName(
+    studentNameJSON: any
+  ): Observable<Student[]> {
+    return this.http.post<Student[]>(
+      `${environment.apiBaseUrl}/studentWithGroup/findStudentByName`,
+      studentNameJSON
     );
   }
 }

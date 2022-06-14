@@ -1,6 +1,9 @@
 <div class="popUp">
   <h1 mat-dialog-title>
-    Acum modificati userul: {{ accountToModify.userName }}
+    <span *ngIf="!addUser"
+      >Acum modificati userul {{ accountToModify.userName }}</span
+    >
+    <span *ngIf="addUser">Adaugare user</span>
   </h1>
   <div mat-dialog-content>
     <mat-form-field appearance="fill" class="editFields">

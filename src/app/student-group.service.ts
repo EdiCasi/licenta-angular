@@ -34,4 +34,10 @@ export class StudentGroupService {
       `${this.apiServerUrl}/delete/${studentGroupId}`
     );
   }
+  public getStudentGroupByName(groupName: any): Observable<StudentGroup[]> {
+    return this.http.post<StudentGroup[]>(
+      `${this.apiServerUrl}/groupByName`,
+      groupName
+    );
+  }
 }

@@ -1,0 +1,35 @@
+<div class="mainDiv">
+  <div class="titleDiv">
+    <h1 mat-dialog-title>Repartizati elevul: {{ student.userName }}</h1>
+  </div>
+
+  <mat-form-field class="searchBarDiv">
+    <span matPrefix> </span>
+    <input
+      type="search"
+      matInput
+      placeholder="Search"
+      name="search"
+      (input)="onInputChange($event)"
+    />
+    <button matSuffix mat-button><mat-icon>search</mat-icon></button>
+  </mat-form-field>
+
+  <div class="foundElementsDiv">
+    <div class="groupDiv" *ngFor="let group of studentGroupsFounded">
+      <button
+        mat-raised-button
+        class="groupButton"
+        (click)="selectGroup(group)"
+      >
+        {{ group.name }}
+      </button>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="actionsDiv">
+    <button mat-raised-button [mat-dialog-close]="" class="cancelButton">
+      Cancel
+    </button>
+  </div>
+</div>

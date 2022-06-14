@@ -9,7 +9,7 @@ export class Student {
   studentGroupName: string;
 
   constructor();
-  constructor(account: Account, studentGroupName: string);
+  constructor(account: Account, studentGroupName?: string);
   constructor(account?: Account, studentGroupName?: string) {
     this.id = account?.id ?? 0;
     this.userName = account?.userName ?? '';

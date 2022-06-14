@@ -33,6 +33,7 @@ import { StudentGroupsComponent } from './student-groups/student-groups.componen
 import { EditStudentGroupPopUpComponent } from './edit-student-group-pop-up/edit-student-group-pop-up.component';
 import { DeleteStudentGroupPopUpComponent } from './delete-student-group-pop-up/delete-student-group-pop-up.component';
 import { StudentsComponent } from './students/students.component';
+import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { StudentsComponent } from './students/students.component';
     EditStudentGroupPopUpComponent,
     DeleteStudentGroupPopUpComponent,
     StudentsComponent,
+    SelectGroupPopUpComponent,
   ],
   imports: [
     BrowserModule,

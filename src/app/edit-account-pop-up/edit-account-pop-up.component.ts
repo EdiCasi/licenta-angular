@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./edit-account-pop-up.component.css'],
 })
 export class EditAccountPopUpComponent {
+  public addUser = false;
   public passwordPattern =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
   public emailPattern =
@@ -23,10 +24,11 @@ export class EditAccountPopUpComponent {
     private accountService: AccountService,
     @Inject(MAT_DIALOG_DATA) public account: Account
   ) {
-    if (account.id != undefined && account.id != 0) {
+    if (this.accountIsInDatabase(account)) {
       Object.assign(this.accountToModify, this.account);
     } else if (account != undefined) {
       this.accountToModify.userType = account.userType;
+      this.addUser = true;
     }
   }
 
@@ -37,8 +39,7 @@ export class EditAccountPopUpComponent {
   onOkClick() {
     this.inputErrors = this.validateInput();
     if (!this.inputErrors) {
-      this.dialogRef.close(this.accountToModify);
-      if (this.account.id != undefined) {
+      if (this.accountIsInDatabase(this.account)) {
         this.modifyAccountInDatabase(this.accountToModify);
       } else {
         this.addAccountInDatabase(this.accountToModify);
@@ -50,6 +51,8 @@ export class EditAccountPopUpComponent {
     this.accountService.updateUser(account).subscribe(
       (response: Account) => {
         console.log('RESPONSE: ' + JSON.stringify(response));
+        //CLOSE THE DIALOG WITH TE MODIFIED USER
+        this.dialogRef.close(response);
         alert('Userul: ' + response.userName + ' a fost modificat cu succes!');
       },
       (error: HttpErrorResponse) => {
@@ -62,8 +65,10 @@ export class EditAccountPopUpComponent {
     this.accountService.addUser(account).subscribe(
       (response: Account) => {
         console.log('RESPONSE: ' + JSON.stringify(response));
-
+        //CLOSE THE DIALOG WITH ThE ADDED USER
         alert('Userul: ' + response.userName + ' a fost adaugat cu succes!');
+
+        this.dialogRef.close(response);
       },
       (error: HttpErrorResponse) => {
         console.log('==Error adding account: ' + JSON.stringify(error));
@@ -96,17 +101,13 @@ export class EditAccountPopUpComponent {
       alert('Va rugam sa completati toate campurile!');
       return true;
     }
-    if (this.account == undefined) {
-      if (!this.accountToModify.email.match(this.emailPattern)) {
-        alert('Va rugam introduceti un email valid!');
-        return true;
-      }
+    if (!this.accountToModify.email.match(this.emailPattern)) {
+      alert('Va rugam introduceti un email valid!');
+      return true;
     }
-    if (this.account == undefined) {
-      if (!this.accountToModify.password.match(this.passwordPattern)) {
-        alert('Va rugam introduceti o parola valida!');
-        return true;
-      }
+    if (!this.accountToModify.password.match(this.passwordPattern)) {
+      alert('Va rugam introduceti o parola valida!');
+      return true;
     }
     return false;
   }
@@ -116,5 +117,9 @@ export class EditAccountPopUpComponent {
       this.accountToModify.password == '' ||
       this.accountToModify.password == undefined
     );
+  }
+
+  private accountIsInDatabase(account: Account) {
+    return account.id != 0 && account.id != undefined;
   }
 }

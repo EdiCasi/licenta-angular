@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountService } from '../account.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserToGroupService } from '../user-to-group.service';
 import { Account } from '../account';
 
 @Component({
@@ -13,15 +14,33 @@ export class DeleteAccountPopUpComponent {
   constructor(
     public dialogRef: MatDialogRef<DeleteAccountPopUpComponent>,
     private accountService: AccountService,
+    private userToGroupService: UserToGroupService,
     @Inject(MAT_DIALOG_DATA) public account: Account
   ) {}
 
   public onDeleteClick() {
-    this.deleteProfessorFromDatabase(this.account);
+    if (this.account.userType == 'student') {
+      this.deleteUserToGroupFromDatabase(this.account.id);
+    } else {
+      this.deleteAccountFromDatabase(this.account);
+    }
     this.dialogRef.close(true);
   }
+  // first we need to delete the relationship between student and group otherwise
+  // foreign key exception will be thrown in spring project
+  private deleteUserToGroupFromDatabase(accountId: number) {
+    this.userToGroupService.deleteStudentByAccountId(accountId).subscribe(
+      (response: any) => {
+        console.log('The relatioship wa deleted succesfully!');
+        this.deleteAccountFromDatabase(this.account);
+      },
+      (error: HttpErrorResponse) => {
+        console.log('==Error deleting relationship: ' + JSON.stringify(error));
+      }
+    );
+  }
 
-  private deleteProfessorFromDatabase(account: Account) {
+  private deleteAccountFromDatabase(account: Account) {
     this.accountService.deleteUser(account.id).subscribe(
       (response: any) => {
         alert('Userul: ' + account.userName + ' a fost sters cu succes!');
