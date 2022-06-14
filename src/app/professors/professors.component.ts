@@ -65,10 +65,11 @@ export class ProfessorsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-
-      const tableData = this.dataSource.data;
-      tableData.push(result);
-      this.dataSource.data = tableData;
+      if (result != undefined) {
+        const tableData = this.dataSource.data;
+        tableData.push(result);
+        this.dataSource.data = tableData;
+      }
     });
   }
 

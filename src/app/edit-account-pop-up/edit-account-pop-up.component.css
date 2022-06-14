@@ -2,8 +2,13 @@
   width: 100%;
   height: 100%;
 }
+.formDiv {
+  height: 70%;
+}
 .editFields {
   width: 100%;
+  margin-bottom: 1em;
+  margin-top: 0.8em;
 }
 .submitButtons {
   float: right;

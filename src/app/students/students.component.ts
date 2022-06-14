@@ -111,15 +111,17 @@ export class StudentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result != undefined) {
+        // add the new student in the table
+
+        const tableData = this.dataSource.data;
+        tableData.push(new Student(result, this.studentGroupName));
+        this.dataSource.data = tableData;
+
         if (this.ifGroupTab()) {
           this.addStudentToGroupInDatabase(result.id, this.studentGroupId);
         } else {
           this.openeChangeGroup(new Student(result));
         }
-
-        const tableData = this.dataSource.data;
-        tableData.push(new Student(result));
-        this.dataSource.data = tableData;
       }
     });
   }
@@ -167,19 +169,20 @@ export class StudentsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((studentGroupName) => {
       console.log('The dialog was closed');
-      if (studentGroupName != null && this.ifGroupTab()) {
-        // don't show the student anymore because is not in the group
+      if (studentGroupName != null) {
         if (this.ifGroupTab()) {
+          // don't show the student anymore because is not in the group
           const tableData = this.dataSource.data.filter(
             (item) => item !== student
           );
           this.dataSource.data = tableData;
         } else {
-          // update with the student with the new group
-          const tableData = this.dataSource.data.map((item) => {
-            return item == student
-              ? { ...item, studentGroupName: studentGroupName }
-              : item;
+          // update the student with the new group
+          const tableData = this.dataSource.data;
+          tableData.forEach((element) => {
+            if (element.id == student.id) {
+              element.studentGroupName = studentGroupName;
+            }
           });
           this.dataSource.data = tableData;
         }

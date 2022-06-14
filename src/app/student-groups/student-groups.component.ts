@@ -40,7 +40,7 @@ export class StudentGroupsComponent implements OnInit {
   public openeEditStudentGrup(studentGroup: StudentGroup) {
     const dialogRef = this.dialog.open(EditStudentGroupPopUpComponent, {
       width: '400px',
-      height: '225px',
+      height: '220px',
       data: studentGroup,
     });
 

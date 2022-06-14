@@ -3,6 +3,9 @@
   height: 100%;
 }
 .editFields {
+  height: 45%;
+}
+.groupName {
   width: 100%;
 }
 .submitButtons {

@@ -101,11 +101,17 @@ export class EditAccountPopUpComponent {
       alert('Va rugam sa completati toate campurile!');
       return true;
     }
-    if (!this.accountToModify.email.match(this.emailPattern)) {
+    if (
+      !this.accountToModify.email.match(this.emailPattern) &&
+      !this.accountIsInDatabase(this.account)
+    ) {
       alert('Va rugam introduceti un email valid!');
       return true;
     }
-    if (!this.accountToModify.password.match(this.passwordPattern)) {
+    if (
+      !this.accountToModify.password.match(this.passwordPattern) &&
+      !this.accountIsInDatabase(this.account)
+    ) {
       alert('Va rugam introduceti o parola valida!');
       return true;
     }

@@ -19,25 +19,8 @@ export class DeleteAccountPopUpComponent {
   ) {}
 
   public onDeleteClick() {
-    if (this.account.userType == 'student') {
-      this.deleteUserToGroupFromDatabase(this.account.id);
-    } else {
-      this.deleteAccountFromDatabase(this.account);
-    }
+    this.deleteAccountFromDatabase(this.account);
     this.dialogRef.close(true);
-  }
-  // first we need to delete the relationship between student and group otherwise
-  // foreign key exception will be thrown in spring project
-  private deleteUserToGroupFromDatabase(accountId: number) {
-    this.userToGroupService.deleteStudentByAccountId(accountId).subscribe(
-      (response: any) => {
-        console.log('The relatioship wa deleted succesfully!');
-        this.deleteAccountFromDatabase(this.account);
-      },
-      (error: HttpErrorResponse) => {
-        console.log('==Error deleting relationship: ' + JSON.stringify(error));
-      }
-    );
   }
 
   private deleteAccountFromDatabase(account: Account) {
