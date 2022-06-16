@@ -1,17 +1,17 @@
 <div class="popUp">
-  <h1 mat-dialog-title>Alegeti un nume pentru grupa</h1>
+  <h1 mat-dialog-title>Alegeti un nume pentru noul curs</h1>
   <div mat-dialog-content class="editFields">
-    <mat-form-field appearance="fill" class="groupName">
+    <mat-form-field appearance="fill" class="courseName">
       <mat-label>Name: </mat-label>
       <input
         matInput
-        [(ngModel)]="groupeToModify.name"
+        [(ngModel)]="newCourseName"
         (input)="onInputChange($event)"
       />
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="submitButtons">
-    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
     <button
       mat-button
       (click)="onOkClick()"

@@ -1,0 +1,114 @@
+<app-menu></app-menu>
+<p>student-course-page works!</p>
+
+<div class="editDiv">
+  <button
+    mat-raised-button
+    class="addButton"
+    (click)="onEditClick()"
+    *ngIf="isEditingMode"
+    color="success"
+  >
+    <mat-icon>done</mat-icon>
+    Finalizare
+  </button>
+
+  <button
+    mat-raised-button
+    class="addElemet"
+    (click)="openAddMaterialPopUp()"
+    *ngIf="isEditingMode"
+  >
+    <mat-icon>add</mat-icon>
+    Adauga material
+  </button>
+
+  <button
+    mat-raised-button
+    class="addElemet"
+    (click)="onEditClick()"
+    *ngIf="isEditingMode"
+  >
+    <mat-icon>add</mat-icon>
+    Asociaza grupa
+  </button>
+
+  <button
+    mat-raised-button
+    class="addButton"
+    (click)="onEditClick()"
+    *ngIf="!isEditingMode"
+  >
+    <mat-icon>edit</mat-icon>
+    Editare curs
+  </button>
+</div>
+<br />
+<br />
+
+<div class="container" *ngFor="let material of materials">
+  <mat-card class="cardDiv">
+    <div class="divMain">
+      <div class="divLeft">
+        <span [ngSwitch]="material.fileType">
+          <img
+            src="assets/images/pdfIcon.png"
+            *ngSwitchCase="'application/pdf'"
+            class="pdfDivElement pdfImage"
+          />
+          <img
+            src="assets/images/winrar-icon.png"
+            *ngSwitchCase="'application/zip'"
+            class="pdfDivElement pdfImage"
+          />
+          <img
+            src="assets/images/jpgIcon.png"
+            *ngSwitchCase="'image/jpeg'"
+            class="pdfDivElement pdfImage"
+          />
+
+          <img
+            src="assets/images/wordIcon.png"
+            *ngSwitchCase="
+              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            "
+            class="pdfDivElement pdfImage"
+          />
+          <img
+            src="assets/images/excelIcon.png"
+            *ngSwitchCase="'text/csv'"
+            class="pdfDivElement pdfImage"
+          />
+          <img
+            src="assets/images/videoIcon.png"
+            *ngSwitchCase="'video/x-matroska'"
+            class="pdfDivElement pdfImage"
+          />
+          <img
+            src="assets/images/defaultFileIcon.png"
+            *ngSwitchDefault
+            class="pdfDivElement pdfImage"
+          />
+        </span>
+
+        <span class="pdfDivElement">{{ material.fileName }}</span>
+      </div>
+      <div class="divRight">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="downloadMaterial(material)"
+          *ngIf="!isEditingMode"
+        >
+          <mat-icon>download</mat-icon>
+          download
+        </button>
+
+        <button mat-raised-button color="delete" *ngIf="isEditingMode">
+          <span class="material-icons"> close</span>
+          stergere
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

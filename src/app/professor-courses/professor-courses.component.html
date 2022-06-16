@@ -1,0 +1,27 @@
+<app-menu></app-menu>
+
+<div class="addStudentDiv">
+  <button mat-raised-button class="addButton" (click)="addCourse()">
+    <mat-icon>add</mat-icon>
+    Curs nou
+  </button>
+</div>
+<br />
+<br />
+
+<div class="container">
+  <div *ngFor="let course of professorCourses">
+    <div class="card-wrapper">
+      <button
+        class="cardStyle"
+        mat-raised-button
+        [routerLink]="[
+          '/professorCourseMaterials',
+          { courseId: course.id, courseName: course.courseName }
+        ]"
+      >
+        {{ course.courseName }}
+      </button>
+    </div>
+  </div>
+</div>

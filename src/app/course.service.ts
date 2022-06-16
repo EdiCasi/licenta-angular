@@ -14,7 +14,22 @@ export class CourseService {
 
   public getStudentCourses(studentId: number): Observable<Course[]> {
     return this.http.get<Course[]>(
-      `${this.apiServerUrl}/studentCourse/${studentId}`
+      `${this.apiServerUrl}/studentCourses/${studentId}`
     );
+  }
+
+  public getProfessorCourses(professorId: number): Observable<Course[]> {
+    return this.http.get<Course[]>(
+      `${this.apiServerUrl}/professorCourses/${professorId}`
+    );
+  }
+  public addCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(`${this.apiServerUrl}/add`, course);
+  }
+  public updateCourse(course: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.apiServerUrl}/update`, course);
+  }
+  public deleteCourse(courseId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/delete/${courseId}`);
   }
 }

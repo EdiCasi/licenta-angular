@@ -5,11 +5,11 @@ import { Material } from '../material';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-student-course-page',
-  templateUrl: './student-course-page.component.html',
-  styleUrls: ['./student-course-page.component.css'],
+  selector: 'app-student-materials-page',
+  templateUrl: './student-materials-page.component.html',
+  styleUrls: ['./student-materials-page.component.css'],
 })
-export class StudentCoursePageComponent implements OnInit {
+export class StudentMaterialsPageComponent implements OnInit {
   private courseId: any;
   public courseName: any;
   public materials: Material[] | undefined;

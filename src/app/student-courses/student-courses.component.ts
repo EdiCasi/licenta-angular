@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./student-courses.component.css'],
 })
 export class StudentCoursesComponent implements OnInit {
-  public studentCourses: Course[] | undefined;
+  public studentCourses: Course[];
 
   constructor(
     private courseService: CourseService,

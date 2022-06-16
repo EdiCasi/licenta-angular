@@ -25,7 +25,7 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { StudentGradesComponent } from './student-grades/student-grades.component';
 import { StudentCalendarComponent } from './student-calendar/student-calendar.component';
 import { CourseService } from './course.service';
-import { StudentCoursePageComponent } from './student-course-page/student-course-page.component';
+import { StudentMaterialsPageComponent } from './student-materials-page/student-materials-page.component';
 import { ProfessorsComponent } from './professors/professors.component';
 import { EditAccountPopUpComponent } from './edit-account-pop-up/edit-account-pop-up.component';
 import { DeleteAccountPopUpComponent } from './delete-account-pop-up/delete-account-pop-up.component';
@@ -34,6 +34,10 @@ import { EditStudentGroupPopUpComponent } from './edit-student-group-pop-up/edit
 import { DeleteStudentGroupPopUpComponent } from './delete-student-group-pop-up/delete-student-group-pop-up.component';
 import { StudentsComponent } from './students/students.component';
 import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-pop-up.component';
+import { ProfessorCoursesComponent } from './professor-courses/professor-courses.component';
+import { AddCoursePopUpComponent } from './add-course-pop-up/add-course-pop-up.component';
+import { ProfessorMaterialsPageComponent } from './professor-materials-page/professor-materials-page.component';
+import { AddMaterialPopUpComponent } from './add-material-pop-up/add-material-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,7 @@ import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-po
     StudentCoursesComponent,
     StudentGradesComponent,
     StudentCalendarComponent,
-    StudentCoursePageComponent,
+    StudentMaterialsPageComponent,
     ProfessorsComponent,
     EditAccountPopUpComponent,
     DeleteAccountPopUpComponent,
@@ -53,6 +57,10 @@ import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-po
     DeleteStudentGroupPopUpComponent,
     StudentsComponent,
     SelectGroupPopUpComponent,
+    ProfessorCoursesComponent,
+    AddCoursePopUpComponent,
+    ProfessorMaterialsPageComponent,
+    AddMaterialPopUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,11 +71,19 @@ import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-po
       { path: 'home', component: HomePageComponent },
       { path: 'calendar', component: StudentCalendarComponent },
       { path: 'grades', component: StudentGradesComponent },
+      {
+        path: 'professorCourseMaterials',
+        component: ProfessorMaterialsPageComponent,
+      },
       { path: 'studentCourses', component: StudentCoursesComponent },
-      { path: 'studentCoursePage', component: StudentCoursePageComponent },
+      {
+        path: 'studentMaterialsPage',
+        component: StudentMaterialsPageComponent,
+      },
       { path: 'professors', component: ProfessorsComponent },
       { path: 'studentGroups', component: StudentGroupsComponent },
       { path: 'students', component: StudentsComponent },
+      { path: 'professorCourses', component: ProfessorCoursesComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,
