@@ -83,7 +83,7 @@ export class StudentsComponent implements OnInit {
     );
   }
 
-  public openeEditStudent(student: Student) {
+  public openEditStudent(student: Student) {
     const dialogRef = this.dialog.open(EditAccountPopUpComponent, {
       width: '400px',
       height: '400px',
@@ -101,7 +101,7 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  public openeAddStudent() {
+  public openAddStudent() {
     const dialogRef = this.dialog.open(EditAccountPopUpComponent, {
       width: '400px',
       height: '400px',
@@ -120,7 +120,7 @@ export class StudentsComponent implements OnInit {
         if (this.ifGroupTab()) {
           this.addStudentToGroupInDatabase(result.id, this.studentGroupId);
         } else {
-          this.openeChangeGroup(new Student(result));
+          this.openChangeGroup(new Student(result));
         }
       }
     });
@@ -142,7 +142,7 @@ export class StudentsComponent implements OnInit {
   }
 
   // DELETE
-  public openeDeleteStudent(student: Student) {
+  public openDeleteStudent(student: Student) {
     const dialogRef = this.dialog.open(DeleteAccountPopUpComponent, {
       width: '300px',
       height: '200px',
@@ -160,7 +160,7 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  public openeChangeGroup(student: Student) {
+  public openChangeGroup(student: Student) {
     const dialogRef = this.dialog.open(SelectGroupPopUpComponent, {
       width: '600px',
       height: '400px',

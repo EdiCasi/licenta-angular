@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCoursePopUpComponent } from '../add-course-pop-up/add-course-pop-up.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-professor-courses',
@@ -13,13 +14,17 @@ import { AddCoursePopUpComponent } from '../add-course-pop-up/add-course-pop-up.
 })
 export class ProfessorCoursesComponent implements OnInit {
   public professorCourses: Course[];
+  public editingCourses: Boolean;
   constructor(
     private courseService: CourseService,
     private auth: AuthService,
+    private route: ActivatedRoute,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
+    this.editingCourses =
+      this.route.snapshot.paramMap.get('editingCourses') == 'true';
     this.getProfessorCourses();
   }
 

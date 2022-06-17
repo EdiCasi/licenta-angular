@@ -1,0 +1,21 @@
+.popUp {
+  width: 100%;
+  height: 100%;
+}
+.editFields {
+  height: 60%;
+}
+.inputField {
+  width: 100%;
+  margin-top: 10px;
+}
+.submitButtons {
+  height: 20%;
+  float: right;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}

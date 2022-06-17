@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 
 <div class="addStudentDiv">
-  <button mat-raised-button class="addButton" (click)="openeAddStudent()">
+  <button mat-raised-button class="addButton" (click)="openAddStudent()">
     <mat-icon>add</mat-icon>
     Adauga un elev
   </button>
@@ -47,7 +47,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef>Editeaza</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button (click)="openeEditStudent(element)">
+        <button mat-raised-button (click)="openEditStudent(element)">
           Modifica
         </button>
       </td>
@@ -59,7 +59,7 @@
         <button
           mat-raised-button
           color="primary"
-          (click)="openeChangeGroup(element)"
+          (click)="openChangeGroup(element)"
         >
           Schimba Grupa
         </button>
@@ -72,7 +72,7 @@
         <button
           mat-raised-button
           color="warn"
-          (click)="openeDeleteStudent(element)"
+          (click)="openDeleteStudent(element)"
         >
           Sterge
         </button>

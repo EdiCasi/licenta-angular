@@ -40,7 +40,11 @@ import { ProfessorMaterialsPageComponent } from './professor-materials-page/prof
 import { AddMaterialPopUpComponent } from './add-material-pop-up/add-material-pop-up.component';
 import { SearchGroupForCourseComponent } from './search-group-for-course/search-group-for-course.component';
 import { AssociatedGroupsPopUpComponent } from './associated-groups-pop-up/associated-groups-pop-up.component';
-
+import { CourseGroupsComponent } from './course-groups/course-groups.component';
+import { ModifyStudentGradesComponent } from './modify-student-grades/modify-student-grades.component';
+import { AddGradePopUpComponent } from './add-grade-pop-up/add-grade-pop-up.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,10 +69,15 @@ import { AssociatedGroupsPopUpComponent } from './associated-groups-pop-up/assoc
     AddMaterialPopUpComponent,
     SearchGroupForCourseComponent,
     AssociatedGroupsPopUpComponent,
+    CourseGroupsComponent,
+    ModifyStudentGradesComponent,
+    AddGradePopUpComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
@@ -88,10 +97,13 @@ import { AssociatedGroupsPopUpComponent } from './associated-groups-pop-up/assoc
       { path: 'studentGroups', component: StudentGroupsComponent },
       { path: 'students', component: StudentsComponent },
       { path: 'professorCourses', component: ProfessorCoursesComponent },
+      { path: 'courseGroups', component: CourseGroupsComponent },
+      { path: 'modifyGrades', component: ModifyStudentGradesComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
@@ -102,7 +114,7 @@ import { AssociatedGroupsPopUpComponent } from './associated-groups-pop-up/assoc
     MatTableModule,
     MatDialogModule,
   ],
-  providers: [AccountService, CourseService],
+  providers: [AccountService, MatDatepickerModule, CourseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

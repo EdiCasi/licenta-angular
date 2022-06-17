@@ -16,8 +16,18 @@
       <span *ngSwitchCase="professorType"></span>
     </span>
     <span *ngSwitchCase="professorType" class="card-wrapper">
-      <button mat-raised-button routerLink="/professorCourses">Cursuri</button>
-      <button mat-raised-button routerLink="/grades">Note</button>
+      <button
+        mat-raised-button
+        [routerLink]="['/professorCourses', { editingCourses: true }]"
+      >
+        Cursuri
+      </button>
+      <button
+        mat-raised-button
+        [routerLink]="['/professorCourses', { editingCourses: false }]"
+      >
+        Note
+      </button>
       <button mat-raised-button routerLink="/calendar">Calendar</button>
     </span>
   </span>
