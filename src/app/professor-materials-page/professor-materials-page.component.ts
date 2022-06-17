@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialService } from '../material.service';
 import { Material } from '../material';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -8,6 +8,9 @@ import { AddMaterialPopUpComponent } from '../add-material-pop-up/add-material-p
 import { AuthService } from '../auth.service';
 import { AskForDeletePopUpComponent } from '../ask-for-delete-pop-up/ask-for-delete-pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SearchGroupForCourseComponent } from '../search-group-for-course/search-group-for-course.component';
+import { AssociatedGroupsPopUpComponent } from '../associated-groups-pop-up/associated-groups-pop-up.component';
+import { CourseService } from '../course.service';
 @Component({
   selector: 'app-professor-materials-page',
   templateUrl: './professor-materials-page.component.html',
@@ -21,7 +24,8 @@ export class ProfessorMaterialsPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private materialService: MaterialService,
-    private auth: AuthService,
+    private courseService: CourseService,
+    private router: Router,
     public dialog: MatDialog
   ) {}
 
@@ -75,8 +79,8 @@ export class ProfessorMaterialsPageComponent implements OnInit {
   public openAddMaterialPopUp() {
     const dialogRef = this.dialog.open(AddMaterialPopUpComponent, {
       width: '400px',
-      height: '220px',
-      data: this.auth.getLoggedUser().id,
+      height: '180px',
+      data: this.courseId,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -109,6 +113,49 @@ export class ProfessorMaterialsPageComponent implements OnInit {
         this.materials = this.materials?.filter(function (value) {
           return value != material;
         });
+      },
+      (error: HttpErrorResponse) => {
+        console.log('==Error deleting material: ' + JSON.stringify(error));
+      }
+    );
+  }
+
+  public openSearchGroupForCoursePopUp() {
+    this.dialog.open(SearchGroupForCourseComponent, {
+      width: '600px',
+      height: '400px',
+      data: this.courseId,
+    });
+  }
+
+  public openAssociatedGroupsPopUp() {
+    this.dialog.open(AssociatedGroupsPopUpComponent, {
+      width: '500px',
+      height: '400px',
+      data: this.courseId,
+    });
+  }
+
+  public openDeleteCoursePopUp() {
+    const dialogRef = this.dialog.open(AskForDeletePopUpComponent, {
+      width: '300px',
+      height: '200px',
+      data: { courseToDelete: this.courseName },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result == true) {
+        this.deleteCurrentCourse();
+      }
+    });
+  }
+
+  public deleteCurrentCourse(): void {
+    this.courseService.deleteCourse(this.courseId).subscribe(
+      (response: any) => {
+        alert('Cursul' + this.courseName + ' a fost sters cu succes!');
+        this.router.navigateByUrl('professorCourses');
       },
       (error: HttpErrorResponse) => {
         console.log('==Error deleting material: ' + JSON.stringify(error));

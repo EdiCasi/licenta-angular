@@ -1,0 +1,31 @@
+<div class="mainDiv">
+  <div class="titleDiv">
+    <h1 mat-dialog-title>Grupe asociate:</h1>
+  </div>
+
+  <div class="groupsDiv">
+    <div class="group" *ngFor="let group of studentGroups">
+      <mat-card class="groupCard">
+        <div class="divLeft">
+          {{ group.name }}
+        </div>
+
+        <div class="divRight">
+          <button
+            class="deleteAssociationButton"
+            color="warn"
+            (click)="onDeleteClick(group)"
+          >
+            x
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="actionsDiv">
+    <button mat-raised-button [mat-dialog-close]="" class="cancelButton">
+      Cancel
+    </button>
+  </div>
+</div>

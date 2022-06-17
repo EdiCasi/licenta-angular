@@ -38,6 +38,8 @@ import { ProfessorCoursesComponent } from './professor-courses/professor-courses
 import { AddCoursePopUpComponent } from './add-course-pop-up/add-course-pop-up.component';
 import { ProfessorMaterialsPageComponent } from './professor-materials-page/professor-materials-page.component';
 import { AddMaterialPopUpComponent } from './add-material-pop-up/add-material-pop-up.component';
+import { SearchGroupForCourseComponent } from './search-group-for-course/search-group-for-course.component';
+import { AssociatedGroupsPopUpComponent } from './associated-groups-pop-up/associated-groups-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { AddMaterialPopUpComponent } from './add-material-pop-up/add-material-po
     AddCoursePopUpComponent,
     ProfessorMaterialsPageComponent,
     AddMaterialPopUpComponent,
+    SearchGroupForCourseComponent,
+    AssociatedGroupsPopUpComponent,
   ],
   imports: [
     BrowserModule,

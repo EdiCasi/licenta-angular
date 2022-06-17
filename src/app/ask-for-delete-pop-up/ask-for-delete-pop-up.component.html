@@ -3,8 +3,15 @@
 
   <h1 mat-dialog-title *ngIf="isMaterial">Stergere material</h1>
 
+  <h1 mat-dialog-title *ngIf="isCourse">Stergere curs</h1>
+
   <div mat-dialog-content *ngIf="isStudentGroup">
     Doriti sa stergeti definitiv grupa {{ onjectReceived.name }} ?
+  </div>
+
+  <div mat-dialog-content *ngIf="isCourse">
+    Doriti sa stergeti definitiv cursul {{ onjectReceived.courseToDelete }},
+    inculsiv tot ce este legat de acesta ?
   </div>
 
   <div mat-dialog-content *ngIf="isMaterial">

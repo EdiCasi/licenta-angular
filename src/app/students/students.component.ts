@@ -201,7 +201,6 @@ export class StudentsComponent implements OnInit {
       (this.studentsFounded.length < MAX_RECORDS_TO_SHOW &&
         this.previousSearchTextLength > searchText.length)
     ) {
-      console.log(' AICI');
       this.getStudentsByName(searchText);
     } else {
       this.studentsFounded = this.filterItemInArray(

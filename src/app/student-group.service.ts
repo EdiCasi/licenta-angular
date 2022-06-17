@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StudentGroup } from './studentGroup';
@@ -38,6 +38,24 @@ export class StudentGroupService {
     return this.http.post<StudentGroup[]>(
       `${this.apiServerUrl}/groupByName`,
       groupName
+    );
+  }
+  public getStudentGroupByCourseId(courseId: any): Observable<StudentGroup[]> {
+    return this.http.get<StudentGroup[]>(
+      `${this.apiServerUrl}/groupsBoundedToCourse/${courseId}`
+    );
+  }
+  public searchStudentGroupByNameAndNotInCourse(
+    groupName: any,
+    courseId: any
+  ): Observable<StudentGroup[]> {
+    var groupReq = {
+      groupName: groupName,
+      courseId: courseId,
+    };
+    return this.http.post<StudentGroup[]>(
+      `${this.apiServerUrl}/groupByNameAndNotInCourse`,
+      groupReq
     );
   }
 }

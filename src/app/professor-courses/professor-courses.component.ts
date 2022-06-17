@@ -28,7 +28,6 @@ export class ProfessorCoursesComponent implements OnInit {
       .getProfessorCourses(this.auth.getLoggedUser().id)
       .subscribe(
         (response: Course[]) => {
-          console.log(JSON.stringify(response));
           this.professorCourses = response;
         },
         (error: HttpErrorResponse) => {

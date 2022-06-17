@@ -6,6 +6,16 @@
     mat-raised-button
     class="addButton"
     (click)="onEditClick()"
+    *ngIf="!isEditingMode"
+  >
+    <mat-icon>edit</mat-icon>
+    Editare curs
+  </button>
+
+  <button
+    mat-raised-button
+    class="addButton"
+    (click)="onEditClick()"
     *ngIf="isEditingMode"
     color="success"
   >
@@ -26,21 +36,30 @@
   <button
     mat-raised-button
     class="addElemet"
-    (click)="onEditClick()"
+    (click)="openSearchGroupForCoursePopUp()"
     *ngIf="isEditingMode"
   >
     <mat-icon>add</mat-icon>
     Asociaza grupa
   </button>
-
   <button
     mat-raised-button
-    class="addButton"
-    (click)="onEditClick()"
-    *ngIf="!isEditingMode"
+    class="addElemet"
+    (click)="openAssociatedGroupsPopUp()"
+    *ngIf="isEditingMode"
   >
-    <mat-icon>edit</mat-icon>
-    Editare curs
+    <mat-icon>remove_red_eye</mat-icon>
+    Grupe asociate
+  </button>
+  <button
+    mat-raised-button
+    class="addElemet"
+    (click)="openDeleteCoursePopUp()"
+    *ngIf="isEditingMode"
+    color="warn"
+  >
+    <mat-icon>delete</mat-icon>
+    Stergere curs
   </button>
 </div>
 <br />
