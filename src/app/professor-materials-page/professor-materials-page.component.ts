@@ -6,6 +6,7 @@ import { Material } from '../material';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AddMaterialPopUpComponent } from '../add-material-pop-up/add-material-pop-up.component';
 import { AuthService } from '../auth.service';
+import { AskForDeletePopUpComponent } from '../ask-for-delete-pop-up/ask-for-delete-pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-professor-materials-page',
@@ -15,11 +16,11 @@ import { MatDialog } from '@angular/material/dialog';
 export class ProfessorMaterialsPageComponent implements OnInit {
   private courseId: any;
   public courseName: any;
-  public materials: Material[] | undefined;
+  public materials: Material[];
   public isEditingMode: Boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private materrialService: MaterialService,
+    private materialService: MaterialService,
     private auth: AuthService,
     public dialog: MatDialog
   ) {}
@@ -33,7 +34,7 @@ export class ProfessorMaterialsPageComponent implements OnInit {
   }
 
   public getCourseMaterials(): void {
-    this.materrialService.getCourseMaterials(this.courseId).subscribe(
+    this.materialService.getCourseMaterials(this.courseId).subscribe(
       (response: Material[]) => {
         this.materials = response;
       },
@@ -46,7 +47,7 @@ export class ProfessorMaterialsPageComponent implements OnInit {
   }
 
   public downloadMaterial(material: Material): void {
-    this.materrialService.getMaterial(material.id).subscribe(
+    this.materialService.getMaterial(material.id).subscribe(
       (response: any) => {
         console.log(' === materialId: ' + material.id);
         console.log(' === response.fileType: ' + response.fileType);
@@ -81,8 +82,37 @@ export class ProfessorMaterialsPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result != undefined) {
-        // this.professorCourses.push(result);
+        this.materials.push(result);
       }
     });
+  }
+
+  public openDeleteMaterialPopUp(selectedMaterial: Material) {
+    const dialogRef = this.dialog.open(AskForDeletePopUpComponent, {
+      width: '300px',
+      height: '200px',
+      data: selectedMaterial,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result == true) {
+        this.deleteMaterial(selectedMaterial);
+      }
+    });
+  }
+
+  public deleteMaterial(material: Material): void {
+    this.materialService.deleteMaterial(material.id).subscribe(
+      (response: any) => {
+        // delete item from array too
+        this.materials = this.materials?.filter(function (value) {
+          return value != material;
+        });
+      },
+      (error: HttpErrorResponse) => {
+        console.log('==Error deleting material: ' + JSON.stringify(error));
+      }
+    );
   }
 }

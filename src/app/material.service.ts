@@ -21,4 +21,15 @@ export class MaterialService {
     const apiurl = `${this.apiServerUrl}/downloadFile/${materialId}`;
     return this.http.get(apiurl, { responseType: 'blob' });
   }
+
+  public deleteMaterial(materialId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiServerUrl}/delete/${materialId}`);
+  }
+
+  public addMaterial(formData: FormData): Observable<Material> {
+    return this.http.post<Material>(
+      `${this.apiServerUrl}/uploadFile`,
+      formData
+    );
+  }
 }

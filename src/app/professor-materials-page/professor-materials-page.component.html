@@ -104,7 +104,12 @@
           download
         </button>
 
-        <button mat-raised-button color="delete" *ngIf="isEditingMode">
+        <button
+          mat-raised-button
+          color="delete"
+          *ngIf="isEditingMode"
+          (click)="openDeleteMaterialPopUp(material)"
+        >
           <span class="material-icons"> close</span>
           stergere
         </button>

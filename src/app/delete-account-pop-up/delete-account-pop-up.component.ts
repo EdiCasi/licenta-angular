@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountService } from '../account.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserToGroupService } from '../user-to-group.service';
 import { Account } from '../account';
 
 @Component({
@@ -14,7 +13,6 @@ export class DeleteAccountPopUpComponent {
   constructor(
     public dialogRef: MatDialogRef<DeleteAccountPopUpComponent>,
     private accountService: AccountService,
-    private userToGroupService: UserToGroupService,
     @Inject(MAT_DIALOG_DATA) public account: Account
   ) {}
 

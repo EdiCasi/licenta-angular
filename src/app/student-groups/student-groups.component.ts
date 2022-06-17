@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { DeleteStudentGroupPopUpComponent } from '../delete-student-group-pop-up/delete-student-group-pop-up.component';
+import { AskForDeletePopUpComponent } from '../ask-for-delete-pop-up/ask-for-delete-pop-up.component';
 import { EditStudentGroupPopUpComponent } from '../edit-student-group-pop-up/edit-student-group-pop-up.component';
 import { StudentGroupService } from '../student-group.service';
 import { StudentGroup } from '../studentGroup';
@@ -105,7 +105,7 @@ export class StudentGroupsComponent implements OnInit {
   }
 
   public openDeleteStudentGroup(studentGroup: StudentGroup) {
-    const dialogRef = this.dialog.open(DeleteStudentGroupPopUpComponent, {
+    const dialogRef = this.dialog.open(AskForDeletePopUpComponent, {
       width: '300px',
       height: '200px',
       data: studentGroup,

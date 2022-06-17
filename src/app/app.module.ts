@@ -31,7 +31,7 @@ import { EditAccountPopUpComponent } from './edit-account-pop-up/edit-account-po
 import { DeleteAccountPopUpComponent } from './delete-account-pop-up/delete-account-pop-up.component';
 import { StudentGroupsComponent } from './student-groups/student-groups.component';
 import { EditStudentGroupPopUpComponent } from './edit-student-group-pop-up/edit-student-group-pop-up.component';
-import { DeleteStudentGroupPopUpComponent } from './delete-student-group-pop-up/delete-student-group-pop-up.component';
+import { AskForDeletePopUpComponent } from './ask-for-delete-pop-up/ask-for-delete-pop-up.component';
 import { StudentsComponent } from './students/students.component';
 import { SelectGroupPopUpComponent } from './select-group-pop-up/select-group-pop-up.component';
 import { ProfessorCoursesComponent } from './professor-courses/professor-courses.component';
@@ -54,7 +54,7 @@ import { AddMaterialPopUpComponent } from './add-material-pop-up/add-material-po
     DeleteAccountPopUpComponent,
     StudentGroupsComponent,
     EditStudentGroupPopUpComponent,
-    DeleteStudentGroupPopUpComponent,
+    AskForDeletePopUpComponent,
     StudentsComponent,
     SelectGroupPopUpComponent,
     ProfessorCoursesComponent,
