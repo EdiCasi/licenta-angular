@@ -22,13 +22,13 @@
       >
         Cursuri
       </button>
+      <button mat-raised-button routerLink="/professorCourses">Catalog</button>
       <button
         mat-raised-button
-        [routerLink]="['/professorCourses', { editingCourses: false }]"
+        [routerLink]="['/professorCourses', { editingEvents: true }]"
       >
-        Note
+        Calendar
       </button>
-      <button mat-raised-button routerLink="/calendar">Calendar</button>
     </span>
   </span>
 </div>

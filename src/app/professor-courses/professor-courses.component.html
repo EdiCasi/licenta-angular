@@ -27,8 +27,20 @@
       <button
         class="cardStyle"
         mat-raised-button
+        [routerLink]="[
+          '/courseGroups',
+          { courseId: course.id, editingEvents: true }
+        ]"
+        *ngIf="editingEvents"
+      >
+        {{ course.courseName }}
+      </button>
+
+      <button
+        class="cardStyle"
+        mat-raised-button
         [routerLink]="['/courseGroups', { courseId: course.id }]"
-        *ngIf="!editingCourses"
+        *ngIf="!editingCourses && !editingEvents"
       >
         {{ course.courseName }}
       </button>

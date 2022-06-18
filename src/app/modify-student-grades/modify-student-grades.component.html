@@ -18,7 +18,10 @@
     <ng-container matColumnDef="show">
       <th mat-header-cell *matHeaderCellDef>Note</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button>
+        <button
+          mat-raised-button
+          (click)="openStudentGradesOnCoursePopUp(element)"
+        >
           <mat-icon>remove_red_eye</mat-icon> Note
         </button>
       </td>

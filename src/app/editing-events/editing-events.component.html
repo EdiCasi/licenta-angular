@@ -1,0 +1,27 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <div *ngFor="let event of events" class="card-wrapper">
+    <mat-card
+      class="eventCard"
+      [ngClass]="dateEequalsToday(event.eventDate) ? 'todayBackground' : ''"
+    >
+      <mat-card-title>{{ event.eventName }}</mat-card-title>
+      <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+      <mat-card-content>{{ event.eventDescription }} </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<br />
+<br />
+<div class="container">
+  <h1 style="font-weight: bold">Evenimente trecute:</h1>
+  <div *ngFor="let event of pastEvents" class="card-wrapper">
+    <mat-card class="eventCard oldBackground">
+      <mat-card-title>{{ event.eventName }}</mat-card-title>
+      <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+      <mat-card-content>{{ event.eventDescription }} </mat-card-content>
+    </mat-card>
+  </div>
+</div>

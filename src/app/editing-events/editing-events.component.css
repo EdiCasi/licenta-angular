@@ -1,0 +1,17 @@
+.container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.card-wrapper {
+  display: grid;
+}
+.eventCard {
+  width: 100%;
+  margin-top: 20px;
+}
+.oldBackground {
+  background-color: rgb(251, 230, 203);
+}
+.todayBackground {
+  background-color: rgb(208, 247, 208);
+}

@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CourseGroupsComponent implements OnInit {
   public studentGroups: StudentGroup[];
   public courseId: number;
+  public editingEvents: boolean;
 
   constructor(
     private studentGroupService: StudentGroupService,
@@ -19,6 +20,8 @@ export class CourseGroupsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.editingEvents =
+      this.route.snapshot.paramMap.get('editingEvents') == 'true';
     this.courseId = Number(this.route.snapshot.paramMap.get('courseId'));
 
     this.getStudentCourses(this.courseId);

@@ -3,9 +3,25 @@
 <div *ngFor="let group of studentGroups" class="container">
   <div class="card-wrapper">
     <button
+      *ngIf="!editingEvents"
       mat-raised-button
       [routerLink]="[
         '/modifyGrades',
+        {
+          studentGroupId: group.id,
+          groupName: group.name,
+          courseId: courseId
+        }
+      ]"
+    >
+      {{ group.name }}
+    </button>
+
+    <button
+      *ngIf="editingEvents"
+      mat-raised-button
+      [routerLink]="[
+        '/editingEvents',
         {
           studentGroupId: group.id,
           groupName: group.name,

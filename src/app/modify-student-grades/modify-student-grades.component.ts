@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AddGradePopUpComponent } from '../add-grade-pop-up/add-grade-pop-up.component';
+import { StudentGradesOnCoursePopUpComponent } from '../student-grades-on-course-pop-up/student-grades-on-course-pop-up.component';
 
 @Component({
   selector: 'app-modify-student-grades',
@@ -31,7 +32,7 @@ export class ModifyStudentGradesComponent implements OnInit {
     this.groupName = this.route.snapshot.paramMap.get('groupName') || '';
     this.courseId = Number(this.route.snapshot.paramMap.get('courseId'));
 
-    this.getAllStudentsFromAgroup(this.courseId);
+    this.getAllStudentsFromAgroup(this.studentGroupId);
   }
 
   public getAllStudentsFromAgroup(studentGroupId: number): void {
@@ -53,6 +54,19 @@ export class ModifyStudentGradesComponent implements OnInit {
       width: '400px',
       height: '300px',
       data: grade,
+    });
+  }
+
+  public openStudentGradesOnCoursePopUp(student: Account) {
+    var obj = {
+      studentId: student.id,
+      courseId: this.courseId,
+      studentName: student.userName,
+    };
+    this.dialog.open(StudentGradesOnCoursePopUpComponent, {
+      width: '500px',
+      height: '400px',
+      data: obj,
     });
   }
 }

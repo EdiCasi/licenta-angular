@@ -45,6 +45,8 @@ import { ModifyStudentGradesComponent } from './modify-student-grades/modify-stu
 import { AddGradePopUpComponent } from './add-grade-pop-up/add-grade-pop-up.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { StudentGradesOnCoursePopUpComponent } from './student-grades-on-course-pop-up/student-grades-on-course-pop-up.component';
+import { EditingEventsComponent } from './editing-events/editing-events.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +74,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CourseGroupsComponent,
     ModifyStudentGradesComponent,
     AddGradePopUpComponent,
+    StudentGradesOnCoursePopUpComponent,
+    EditingEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +103,7 @@ import { MatNativeDateModule } from '@angular/material/core';
       { path: 'professorCourses', component: ProfessorCoursesComponent },
       { path: 'courseGroups', component: CourseGroupsComponent },
       { path: 'modifyGrades', component: ModifyStudentGradesComponent },
+      { path: 'editingEvents', component: EditingEventsComponent },
       { path: '', component: HomePageComponent },
     ]),
     FlexLayoutModule,

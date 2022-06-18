@@ -1,0 +1,38 @@
+<div class="mainDiv">
+  <div class="titleDiv">
+    <h1 mat-dialog-title>Media studentului: {{ average }}</h1>
+  </div>
+
+  <div class="gradesDiv">
+    <div class="gradeCard grade" *ngFor="let grade of studentGrades">
+      <div class="cardValue">
+        <mat-card>
+          {{ grade.gradeValue }}
+        </mat-card>
+      </div>
+      <div class="cardDate">
+        <mat-card>
+          <div class="divLeft">
+            {{ grade.gradeDate }}
+          </div>
+
+          <div class="divRight">
+            <button
+              class="deleteGradeButton"
+              color="warn"
+              (click)="onDeleteClick(grade.id)"
+            >
+              x
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="actionsDiv">
+    <button mat-raised-button [mat-dialog-close]="" class="cancelButton">
+      Cancel
+    </button>
+  </div>
+</div>

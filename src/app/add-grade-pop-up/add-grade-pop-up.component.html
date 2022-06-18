@@ -20,6 +20,7 @@
         (input)="onInputChange()"
         [matDatepicker]="datePicker"
         (click)="datePicker.open()"
+        [max]="today"
       />
       <mat-datepicker-toggle
         matSuffix

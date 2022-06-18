@@ -12,6 +12,7 @@ import { DateAdapter } from '@angular/material/core';
 export class AddGradePopUpComponent implements OnInit {
   public gradeValue: number;
   public gradeDate: Date;
+  public today: Date;
   public inputErrors: Boolean = false;
 
   constructor(
@@ -21,11 +22,13 @@ export class AddGradePopUpComponent implements OnInit {
     private dateAdapter: DateAdapter<Date>
   ) {
     // for date picker to have the good format
-    this.gradeDate = new Date();
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.today = new Date();
+    this.gradeDate = new Date();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

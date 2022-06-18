@@ -15,13 +15,16 @@ export class GradeService {
   public getStudentGradesForCourse(
     studentId: number,
     courseId: number
-  ): Observable<Grade> {
+  ): Observable<Grade[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('studentId', studentId);
     queryParams = queryParams.append('courseId', courseId);
-    return this.http.post<Grade>(`${this.apiServerUrl}/add`, {
-      params: queryParams,
-    });
+    return this.http.get<Grade[]>(
+      `${this.apiServerUrl}/gradeByCourseAndStudent`,
+      {
+        params: queryParams,
+      }
+    );
   }
 
   public addGrade(grade: Grade): Observable<Grade> {

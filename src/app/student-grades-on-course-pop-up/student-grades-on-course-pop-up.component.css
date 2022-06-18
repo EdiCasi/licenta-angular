@@ -1,0 +1,53 @@
+.mainDiv {
+  height: 100%;
+}
+.titleDiv {
+  width: 100%;
+  height: 15%;
+}
+
+.gradesDiv {
+  overflow: auto;
+  width: 100%;
+  height: 65%;
+}
+
+.gradeCard {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.cancelButton {
+  margin-left: 80%;
+}
+.cardValue {
+  width: 10%;
+  display: inline-block;
+  margin-right: 2%;
+}
+.cardDate {
+  width: 88%;
+  display: inline-block;
+  float: right;
+}
+.divLeft {
+  width: 70%;
+  display: inline-block;
+}
+.divRight {
+  width: 30%;
+  display: inline-block;
+  margin-right: 0;
+  text-align: right;
+}
+.deleteGradeButton {
+  width: 30px;
+}
+.actionsDiv {
+  width: 100%;
+  height: 20%;
+}

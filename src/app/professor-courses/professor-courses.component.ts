@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfessorCoursesComponent implements OnInit {
   public professorCourses: Course[];
   public editingCourses: Boolean;
+  public editingEvents: Boolean;
   constructor(
     private courseService: CourseService,
     private auth: AuthService,
@@ -25,6 +26,10 @@ export class ProfessorCoursesComponent implements OnInit {
   ngOnInit(): void {
     this.editingCourses =
       this.route.snapshot.paramMap.get('editingCourses') == 'true';
+
+    this.editingEvents =
+      this.route.snapshot.paramMap.get('editingEvents') == 'true';
+
     this.getProfessorCourses();
   }
 
