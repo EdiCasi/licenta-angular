@@ -1,14 +1,67 @@
 <app-menu></app-menu>
 
+<div class="editDiv">
+  <button
+    *ngIf="!isEditing"
+    mat-raised-button
+    class="editButtons"
+    (click)="onEditClick()"
+  >
+    <mat-icon>edit</mat-icon>
+    Editare evenimente
+  </button>
+  <button
+    *ngIf="isEditing"
+    mat-raised-button
+    class="editButtons"
+    (click)="onEditClick()"
+    color="success"
+  >
+    <mat-icon>done</mat-icon>
+    Finalizare
+  </button>
+  <button
+    *ngIf="isEditing"
+    mat-raised-button
+    class="addElemet"
+    (click)="openAddEventPopUp()"
+  >
+    <mat-icon>add</mat-icon>
+    Adauga eveniment
+  </button>
+</div>
+<br />
+<br />
 <div class="container">
   <div *ngFor="let event of events" class="card-wrapper">
     <mat-card
       class="eventCard"
       [ngClass]="dateEequalsToday(event.eventDate) ? 'todayBackground' : ''"
     >
-      <mat-card-title>{{ event.eventName }}</mat-card-title>
-      <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
-      <mat-card-content>{{ event.eventDescription }} </mat-card-content>
+      <div class="divLeft">
+        <mat-card-title>{{ event.eventName }}</mat-card-title>
+        <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+        <mat-card-content>{{ event.eventDescription }}</mat-card-content>
+      </div>
+      <div class="divRight">
+        <button
+          *ngIf="isEditing"
+          mat-raised-button
+          (click)="openUpdateEventPopUp(event)"
+        >
+          <mat-icon>edit</mat-icon>
+          Editare
+        </button>
+        <button
+          mat-raised-button
+          color="delete"
+          *ngIf="isEditing"
+          (click)="openAskForDeletePopUp(event)"
+        >
+          <mat-icon>delete</mat-icon>
+          stergere
+        </button>
+      </div>
     </mat-card>
   </div>
 </div>
@@ -19,9 +72,22 @@
   <h1 style="font-weight: bold">Evenimente trecute:</h1>
   <div *ngFor="let event of pastEvents" class="card-wrapper">
     <mat-card class="eventCard oldBackground">
-      <mat-card-title>{{ event.eventName }}</mat-card-title>
-      <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
-      <mat-card-content>{{ event.eventDescription }} </mat-card-content>
+      <div class="divLeft">
+        <mat-card-title>{{ event.eventName }}</mat-card-title>
+        <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+        <mat-card-content>{{ event.eventDescription }}</mat-card-content>
+      </div>
+      <div class="divRight">
+        <button
+          mat-raised-button
+          color="delete"
+          *ngIf="isEditing"
+          (click)="openAskForDeletePopUp(event)"
+        >
+          <mat-icon>delete</mat-icon>
+          stergere
+        </button>
+      </div>
     </mat-card>
   </div>
 </div>

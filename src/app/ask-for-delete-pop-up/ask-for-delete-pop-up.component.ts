@@ -9,6 +9,7 @@ export class AskForDeletePopUpComponent implements OnInit {
   public isStudentGroup: Boolean = false;
   public isMaterial: Boolean = false;
   public isCourse: Boolean = false;
+  public isEvent: Boolean = false;
   constructor(
     public dialogRef: MatDialogRef<AskForDeletePopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public onjectReceived: any
@@ -19,7 +20,9 @@ export class AskForDeletePopUpComponent implements OnInit {
   }
 
   verifyObjectReceived(object: any) {
-    if (object.courseToDelete != undefined) {
+    if (object.eventToDelete != undefined) {
+      this.isEvent = true;
+    } else if (object.courseToDelete != undefined) {
       this.isCourse = true;
     } else if (object.fileType != undefined) {
       this.isMaterial = true;

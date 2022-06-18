@@ -47,6 +47,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { StudentGradesOnCoursePopUpComponent } from './student-grades-on-course-pop-up/student-grades-on-course-pop-up.component';
 import { EditingEventsComponent } from './editing-events/editing-events.component';
+import { AddEventPopUpComponent } from './add-event-pop-up/add-event-pop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import { EditingEventsComponent } from './editing-events/editing-events.componen
     AddGradePopUpComponent,
     StudentGradesOnCoursePopUpComponent,
     EditingEventsComponent,
+    AddEventPopUpComponent,
   ],
   imports: [
     BrowserModule,

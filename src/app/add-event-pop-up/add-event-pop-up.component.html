@@ -1,0 +1,50 @@
+<div class="popUp">
+  <h1 mat-dialog-title>Introduceti un nou eveniment</h1>
+  <div mat-dialog-content class="editFields">
+    <mat-form-field appearance="fill" class="inputBox">
+      <mat-label>Nume: </mat-label>
+      <input matInput [(ngModel)]="newEventName" (input)="onInputChange()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputBox">
+      <mat-label>Descriere: </mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="newEventDescription"
+        (input)="onInputChange()"
+        class="descriptionField"
+      >
+      </textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputBox">
+      <mat-label>Data: </mat-label>
+      <input
+        matInput
+        [(ngModel)]="newEventDate"
+        (input)="onInputChange()"
+        [matDatepicker]="datePicker"
+        (click)="datePicker.open()"
+        [min]="today"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle
+      ><mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions class="submitButtons">
+    <button mat-button [mat-dialog-close]="">Cancel</button>
+    <button
+      mat-raised-button
+      (click)="onAddClick()"
+      cdkFocusInitial
+      [disabled]="inputErrors"
+    >
+      Ok
+    </button>
+  </div>
+</div>

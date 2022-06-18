@@ -5,6 +5,13 @@
 
   <h1 mat-dialog-title *ngIf="isCourse">Stergere curs</h1>
 
+  <h1 mat-dialog-title *ngIf="isEvent">Stergere eveniment</h1>
+
+  <div mat-dialog-content *ngIf="isEvent">
+    Doriti sa stergeti definitiv evenimentul:
+    {{ onjectReceived.eventToDelete }} ?
+  </div>
+
   <div mat-dialog-content *ngIf="isStudentGroup">
     Doriti sa stergeti definitiv grupa {{ onjectReceived.name }} ?
   </div>
