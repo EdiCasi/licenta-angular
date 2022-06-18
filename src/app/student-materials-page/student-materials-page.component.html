@@ -1,58 +1,61 @@
 <app-menu></app-menu>
-<p>student-course-page works!</p>
-
-<div class="container" *ngFor="let material of materials">
-  <mat-card class="cardDiv">
-    <div class="divMain">
-      <div class="divLeft">
-        <span [ngSwitch]="material.fileType">
-          <img
-            src="assets/images/pdfIcon.png"
-            *ngSwitchCase="'application/pdf'"
-            class="pdfDivElement pdfImage"
-          />
-          <img
-            src="assets/images/jpgIcon.png"
-            *ngSwitchCase="'image/jpeg'"
-            class="pdfDivElement pdfImage"
-          />
-
-          <img
-            src="assets/images/wordIcon.png"
-            *ngSwitchCase="
-              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-            "
-            class="pdfDivElement pdfImage"
-          />
-          <img
-            src="assets/images/excelIcon.png"
-            *ngSwitchCase="'text/csv'"
-            class="pdfDivElement pdfImage"
-          />
-          <img
-            src="assets/images/videoIcon.png"
-            *ngSwitchCase="'video/x-matroska'"
-            class="pdfDivElement pdfImage"
-          />
-          <img
-            src="assets/images/defaultFileIcon.png"
-            *ngSwitchDefault
-            class="pdfDivElement pdfImage"
-          />
-        </span>
-
-        <span class="pdfDivElement">{{ material.fileName }}</span>
-      </div>
-      <div class="divRight">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="downloadMaterial(material)"
-        >
-          <mat-icon>download</mat-icon>
-          download
-        </button>
-      </div>
-    </div>
+<div class="main">
+  <mat-card class="informationDiv container">
+    Puteti descarca materialul dorit:
   </mat-card>
+  <div class="container" *ngFor="let material of materials">
+    <mat-card class="cardDiv">
+      <div class="divMain">
+        <div class="divLeft">
+          <span [ngSwitch]="material.fileType">
+            <img
+              src="assets/images/pdfIcon.png"
+              *ngSwitchCase="'application/pdf'"
+              class="pdfDivElement pdfImage"
+            />
+            <img
+              src="assets/images/jpgIcon.png"
+              *ngSwitchCase="'image/jpeg'"
+              class="pdfDivElement pdfImage"
+            />
+
+            <img
+              src="assets/images/wordIcon.png"
+              *ngSwitchCase="
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+              "
+              class="pdfDivElement pdfImage"
+            />
+            <img
+              src="assets/images/excelIcon.png"
+              *ngSwitchCase="'text/csv'"
+              class="pdfDivElement pdfImage"
+            />
+            <img
+              src="assets/images/videoIcon.png"
+              *ngSwitchCase="'video/x-matroska'"
+              class="pdfDivElement pdfImage"
+            />
+            <img
+              src="assets/images/defaultFileIcon.png"
+              *ngSwitchDefault
+              class="pdfDivElement pdfImage"
+            />
+          </span>
+
+          <span class="pdfDivElement">{{ material.fileName }}</span>
+        </div>
+        <div class="divRight">
+          <button
+            mat-raised-button
+            color="background"
+            (click)="downloadMaterial(material)"
+          >
+            <mat-icon>download</mat-icon>
+            download
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>

@@ -1,12 +1,13 @@
-<mat-toolbar color="primary" class="mat-elevation-z4">
-  <span>
-    <mat-icon>school</mat-icon>
-    Learning
-  </span>
+<div class="menuComponent">
+  <mat-toolbar color="background" class="mat-elevation-z4">
+    <span>
+      <mat-icon>school</mat-icon>
+      Learning
+    </span>
 
-  <div class="spacer"></div>
+    <div class="spacer"></div>
 
-  <a mat-button routerLink="/home">Home</a>
-  <a mat-button routerLink="/login">My Profile</a>
-  <a mat-raised-button color="accent" (click)="logoutTheUser()">Log Out</a>
-</mat-toolbar>
+    <a mat-button routerLink="/home">Home</a>
+    <a mat-raised-button (click)="logoutTheUser()">Log Out</a>
+  </mat-toolbar>
+</div>

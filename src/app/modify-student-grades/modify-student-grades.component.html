@@ -1,42 +1,44 @@
 <app-menu></app-menu>
+<div class="main">
+  <div class="container">
+    <div class="tableHeaderForGroup">
+      <mat-card>{{ groupName }}</mat-card>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Nr.</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
+      </ng-container>
 
-<div class="container">
-  <div class="tableHeaderForGroup">
-    <mat-card>{{ groupName }}</mat-card>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nume</th>
+        <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="show">
+        <th mat-header-cell *matHeaderCellDef>Note</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            (click)="openStudentGradesOnCoursePopUp(element)"
+            color="background"
+          >
+            <mat-icon>remove_red_eye</mat-icon> Note
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="add">
+        <th mat-header-cell *matHeaderCellDef>Adauga note</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="openAddGradePopUp(element.id)">
+            <mat-icon>add</mat-icon>Adauga
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef>Nr.</th>
-      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="show">
-      <th mat-header-cell *matHeaderCellDef>Note</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-raised-button
-          (click)="openStudentGradesOnCoursePopUp(element)"
-        >
-          <mat-icon>remove_red_eye</mat-icon> Note
-        </button>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="add">
-      <th mat-header-cell *matHeaderCellDef>Adauga note</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-raised-button (click)="openAddGradePopUp(element.id)">
-          <mat-icon>add</mat-icon>Adauga
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
 </div>

@@ -1,34 +1,90 @@
 <app-menu></app-menu>
 
-<p>{{ loggedUser?.userName }}</p>
-
 <div class="container">
   <span [ngSwitch]="loggedUser?.userType">
     <span *ngSwitchCase="studentType" class="card-wrapper">
-      <button mat-raised-button routerLink="/studentCourses">Cursuri</button>
-      <button mat-raised-button routerLink="/grades">Note</button>
-      <button mat-raised-button routerLink="/calendar">Calendar</button>
+      <button mat-raised-button routerLink="/studentCourses" class="menuButton">
+        Cursuri
+      </button>
+      <button mat-raised-button routerLink="/grades" class="menuButton">
+        Note
+      </button>
+      <button
+        mat-raised-button
+        routerLink="/studentsCalendar"
+        class="menuButton"
+      >
+        Calendar
+      </button>
     </span>
     <span *ngSwitchCase="adminType" class="card-wrapper">
-      <button mat-raised-button routerLink="/professors">Profesori</button>
-      <button mat-raised-button routerLink="/studentGroups">Grupe</button>
-      <button mat-raised-button routerLink="/students">Elevi</button>
+      <button mat-raised-button routerLink="/professors" class="menuButton">
+        Profesori
+      </button>
+      <button mat-raised-button routerLink="/studentGroups" class="menuButton">
+        Grupe
+      </button>
+      <button mat-raised-button routerLink="/students" class="menuButton">
+        Elevi
+      </button>
       <span *ngSwitchCase="professorType"></span>
     </span>
     <span *ngSwitchCase="professorType" class="card-wrapper">
       <button
         mat-raised-button
         [routerLink]="['/professorCourses', { editingCourses: true }]"
+        class="menuButton"
       >
         Cursuri
       </button>
-      <button mat-raised-button routerLink="/professorCourses">Catalog</button>
+      <button
+        mat-raised-button
+        routerLink="/professorCourses"
+        class="menuButton"
+      >
+        Catalog
+      </button>
       <button
         mat-raised-button
         [routerLink]="['/professorCourses', { editingEvents: true }]"
+        class="menuButton"
       >
         Calendar
       </button>
     </span>
   </span>
+</div>
+
+<br />
+<br />
+<div *ngIf="loggedUser?.userType != adminType">
+  <div class="eventsContainer">
+    <h1>Evenimente urmatoare:</h1>
+    <div *ngFor="let event of events" class="event-card-wrapper">
+      <mat-card
+        class="eventCard"
+        [ngClass]="dateEequalsToday(event.eventDate) ? 'todayBackground' : ''"
+      >
+        <mat-card-title>{{ event.eventName }}</mat-card-title>
+        <mat-card-subtitle
+          ><h2>
+            Curs: {{ event.courseName
+            }}<span *ngIf="loggedUser?.userType == professorType"
+              ><br />
+              Grupa: {{ event.groupName }}</span
+            >
+          </h2></mat-card-subtitle
+        >
+        <mat-card-subtitle>Data: {{ event.eventDate }}</mat-card-subtitle>
+        <mat-card-content>{{ event.eventDescription }}</mat-card-content>
+      </mat-card>
+    </div>
+    <button
+      mat-raised-button
+      routerLink="/studentsCalendar"
+      class="seeMoreButton"
+    >
+      Vezi mai multe evenimente
+    </button>
+  </div>
 </div>

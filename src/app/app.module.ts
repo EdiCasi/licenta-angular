@@ -88,7 +88,7 @@ import { AddEventPopUpComponent } from './add-event-pop-up/add-event-pop-up.comp
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'home', component: HomePageComponent },
-      { path: 'calendar', component: StudentCalendarComponent },
+      { path: 'studentsCalendar', component: StudentCalendarComponent },
       { path: 'grades', component: StudentGradesComponent },
       {
         path: 'professorCourseMaterials',

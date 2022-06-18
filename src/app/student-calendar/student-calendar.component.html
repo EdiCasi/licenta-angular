@@ -1,2 +1,19 @@
 <app-menu></app-menu>
-<p>student-calendar works!</p>
+<div class="main">
+  <div class="container">
+    <mat-card class="informationDiv"> Evenimente viitoare: </mat-card>
+    <div *ngFor="let event of events">
+      <mat-card
+        class="eventCard"
+        [ngClass]="dateEequalsToday(event.eventDate) ? 'todayBackground' : ''"
+      >
+        <mat-card-title>{{ event.eventName }}</mat-card-title>
+        <mat-card-subtitle
+          ><h2>Curs: {{ event.courseName }}</h2></mat-card-subtitle
+        >
+        <mat-card-subtitle>Data: {{ event.eventDate }}</mat-card-subtitle>
+        <mat-card-content>{{ event.eventDescription }}</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

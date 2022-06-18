@@ -1,35 +1,39 @@
 <app-menu></app-menu>
+<div class="main">
+  <mat-card class="container informationDiv">
+    Selectati o grupa pentru a putea vedea elevii:
+  </mat-card>
+  <div *ngFor="let group of studentGroups" class="container">
+    <div class="card-wrapper">
+      <button
+        *ngIf="!editingEvents"
+        mat-raised-button
+        [routerLink]="[
+          '/modifyGrades',
+          {
+            studentGroupId: group.id,
+            groupName: group.name,
+            courseId: courseId
+          }
+        ]"
+      >
+        {{ group.name }}
+      </button>
 
-<div *ngFor="let group of studentGroups" class="container">
-  <div class="card-wrapper">
-    <button
-      *ngIf="!editingEvents"
-      mat-raised-button
-      [routerLink]="[
-        '/modifyGrades',
-        {
-          studentGroupId: group.id,
-          groupName: group.name,
-          courseId: courseId
-        }
-      ]"
-    >
-      {{ group.name }}
-    </button>
-
-    <button
-      *ngIf="editingEvents"
-      mat-raised-button
-      [routerLink]="[
-        '/editingEvents',
-        {
-          studentGroupId: group.id,
-          groupName: group.name,
-          courseId: courseId
-        }
-      ]"
-    >
-      {{ group.name }}
-    </button>
+      <button
+        *ngIf="editingEvents"
+        mat-raised-button
+        [routerLink]="[
+          '/editingEvents',
+          {
+            studentGroupId: group.id,
+            groupName: group.name,
+            courseId: courseId
+          }
+        ]"
+      >
+        {{ group.name }}
+      </button>
+    </div>
   </div>
 </div>

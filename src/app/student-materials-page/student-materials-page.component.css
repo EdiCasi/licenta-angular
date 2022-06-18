@@ -28,3 +28,15 @@
 .cardDiv {
   margin-top: 20px;
 }
+
+.main {
+  margin-top: 70px;
+}
+.informationDiv {
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+.mat-background {
+  background-color: #061045;
+  color: #fff;
+}

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event } from './event';
+import { EventSummary } from './eventSummary';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,13 +22,18 @@ export class EventService {
     return this.http.delete<any>(`${this.apiServerUrl}/delete/${eventId}`);
   }
 
-  public getStudentEvents(studentId: number): Observable<Event[]> {
-    return this.http.get<Event[]>(
+  public getStudentEvents(studentId: number): Observable<EventSummary[]> {
+    return this.http.get<EventSummary[]>(
       `${this.apiServerUrl}/studentEvents/${studentId}`
     );
   }
-  public getProfessorEvents(professorId: number): Observable<Event[]> {
-    return this.http.get<Event[]>(
+  public getStudentEventsLimit(studentId: number): Observable<EventSummary[]> {
+    return this.http.get<EventSummary[]>(
+      `${this.apiServerUrl}/studentEventsLimit/${studentId}`
+    );
+  }
+  public getProfessorEvents(professorId: number): Observable<EventSummary[]> {
+    return this.http.get<EventSummary[]>(
       `${this.apiServerUrl}/professorEvents/${professorId}`
     );
   }

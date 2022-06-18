@@ -1,67 +1,72 @@
 <app-menu></app-menu>
-
-<div class="addStudentGroupDiv">
-  <button mat-raised-button class="addButton" (click)="openeAddStudentGroup()">
-    <mat-icon>add</mat-icon>
-    Adauga o grupa
-  </button>
-</div>
-<br />
-
-<div class="container">
-  <div class="tableHeader">
-    <mat-card>Grupe</mat-card>
+<div class="main">
+  <div class="addStudentGroupDiv">
+    <button
+      mat-raised-button
+      class="addButton"
+      (click)="openeAddStudentGroup()"
+    >
+      <mat-icon>add</mat-icon>
+      Adauga o grupa
+    </button>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef>Nr.</th>
-      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
-    </ng-container>
+  <br />
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+  <div class="container">
+    <div class="tableHeader">
+      <mat-card>Grupe</mat-card>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Nr.</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
+      </ng-container>
 
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef>Editeaza</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-raised-button (click)="openeEditStudentGrup(element)">
-          Modifica
-        </button>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nume</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="seeStudents">
-      <th mat-header-cell *matHeaderCellDef>Vezi elevii</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-raised-button
-          color="primary"
-          [routerLink]="[
-            '/students',
-            { studentGroupId: element.id, studentGroupName: element.name }
-          ]"
-        >
-          Vezi elevii
-        </button>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Editeaza</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="openeEditStudentGrup(element)">
+            Modifica
+          </button>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef>Sterge</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="openDeleteStudentGroup(element)"
-        >
-          Sterge
-        </button>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="seeStudents">
+        <th mat-header-cell *matHeaderCellDef>Vezi elevii</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            color="background"
+            [routerLink]="[
+              '/students',
+              { studentGroupId: element.id, studentGroupName: element.name }
+            ]"
+          >
+            Vezi elevii
+          </button>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Sterge</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="openDeleteStudentGroup(element)"
+          >
+            Sterge
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 </div>

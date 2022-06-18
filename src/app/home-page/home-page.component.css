@@ -1,4 +1,4 @@
-button {
+.menuButton {
   margin: 1rem;
   text-align: center;
   padding: 60px 0;
@@ -15,4 +15,24 @@ button {
 .container {
   margin-left: 20%;
   margin-right: 20%;
+  margin-top: 70px;
+}
+
+.eventsContainer {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.event-card-wrapper {
+  display: grid;
+}
+.eventCard {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.todayBackground {
+  background-color: rgb(208, 247, 208);
+}
+.seeMoreButton {
+  width: 100%;
+  margin-bottom: 10px;
 }

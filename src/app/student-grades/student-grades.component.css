@@ -44,3 +44,9 @@ button {
   width: 100%;
   text-align: center;
 }
+.main {
+  margin-top: 70px;
+}
+.informationDiv {
+  font-size: 18px;
+}

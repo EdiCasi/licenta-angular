@@ -50,3 +50,8 @@ mat-error {
   opacity: 0.2;
   z-index: 1;
 }
+
+.mat-background {
+  background-color: #061045;
+  color: #fff;
+}

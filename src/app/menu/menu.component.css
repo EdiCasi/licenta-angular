@@ -1,3 +1,14 @@
 .spacer {
   flex: 1 1 auto;
 }
+.menuComponent {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+  top: 0;
+}
+.mat-background {
+  background-color: #061045;
+  color: #fff;
+}

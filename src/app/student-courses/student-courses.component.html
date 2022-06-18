@@ -1,17 +1,19 @@
 <app-menu></app-menu>
-
-<p>student-courses works!</p>
-
-<div *ngFor="let course of studentCourses" class="container">
-  <div class="card-wrapper">
-    <button
-      mat-raised-button
-      [routerLink]="[
-        '/studentMaterialsPage',
-        { courseId: course.id, courseName: course.courseName }
-      ]"
-    >
-      {{ course.courseName }}
-    </button>
+<div class="main">
+  <mat-card class="informationDiv container">
+    Selectati un curs pentru a vedea materialele:
+  </mat-card>
+  <div *ngFor="let course of studentCourses" class="container">
+    <div class="card-wrapper">
+      <button
+        mat-raised-button
+        [routerLink]="[
+          '/studentMaterialsPage',
+          { courseId: course.id, courseName: course.courseName }
+        ]"
+      >
+        {{ course.courseName }}
+      </button>
+    </div>
   </div>
 </div>

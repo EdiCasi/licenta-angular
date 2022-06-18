@@ -1,58 +1,60 @@
 <app-menu></app-menu>
 
-<div class="addProfessorDiv">
-  <button mat-raised-button class="addButton" (click)="openeAddProfessor()">
-    <mat-icon>add</mat-icon>
-    Adauga un profesor
-  </button>
-</div>
-<br />
-
-<div class="container">
-  <div class="tableHeader">
-    <mat-card>Profesori</mat-card>
+<div class="main">
+  <div class="addProfessorDiv">
+    <button mat-raised-button class="addButton" (click)="openeAddProfessor()">
+      <mat-icon>add</mat-icon>
+      Adauga un profesor
+    </button>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
+  <br />
+
+  <div class="container">
+    <div class="tableHeader">
+      <mat-card>Profesori</mat-card>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef>Nr.</th>
-      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Nr.</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}.</td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nume</th>
+        <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+      </ng-container>
 
-    <!-- Edit Column -->
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef>Editeaza</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-raised-button (click)="openeEditProfessor(element)">
-          Modifica
-        </button>
-      </td>
-    </ng-container>
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Editeaza</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="openeEditProfessor(element)">
+            Modifica
+          </button>
+        </td>
+      </ng-container>
 
-    <!-- Delete Column -->
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef>Sterge</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="openDeleteProfessor(element)"
-        >
-          Sterge
-        </button>
-      </td>
-    </ng-container>
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Sterge</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="openDeleteProfessor(element)"
+          >
+            Sterge
+          </button>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 </div>

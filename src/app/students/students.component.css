@@ -46,3 +46,10 @@ th.mat-header-cell {
 ::ng-deep .mat-form-field-wrapper {
   margin-bottom: -1.25em;
 }
+.main {
+  margin-top: 70px;
+}
+.mat-background {
+  background-color: #061045;
+  color: #fff;
+}
