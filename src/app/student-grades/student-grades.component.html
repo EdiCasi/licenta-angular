@@ -1,2 +1,48 @@
 <app-menu></app-menu>
-<p>student-grades works!</p>
+
+<div *ngFor="let course of studentCourses" class="container">
+  <div class="card-wrapper">
+    <button mat-raised-button (click)="onCourseClick(course)">
+      <mat-icon *ngIf="courseToGrades.get(course) == undefined"
+        >keyboard_arrow_down</mat-icon
+      >
+      <mat-icon *ngIf="courseToGrades.get(course) != undefined"
+        >keyboard_arrow_up</mat-icon
+      >
+      {{ course.courseName }}
+    </button>
+    <div class="gradeCard">
+      <div *ngIf="courseToGrades.get(course) != undefined">
+        <div *ngIf="courseToGrades.get(course)?.length != 0" class="grade">
+          <div class="message">
+            <mat-card> Media: {{ courseToAverage.get(course) }}</mat-card>
+          </div>
+        </div>
+        <div *ngFor="let grade of courseToGrades.get(course)" class="grade">
+          <div class="cardValue">
+            <mat-card
+              [ngClass]="
+                grade.gradeValue > 5 ? 'greenBackground' : 'redBackground'
+              "
+            >
+              {{ grade.gradeValue }}
+            </mat-card>
+          </div>
+          <div class="cardDate">
+            <mat-card>
+              {{ grade.gradeDate }}
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="courseToGrades.get(course)?.length == 0">
+        <div class="grade">
+          <div class="message">
+            <mat-card> Nu a fost incarcata nici o nota momentan. </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
