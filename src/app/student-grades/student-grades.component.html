@@ -25,7 +25,7 @@
             <div class="cardValue">
               <mat-card
                 [ngClass]="
-                  grade.gradeValue > 5 ? 'greenBackground' : 'redBackground'
+                  grade.gradeValue >= 5 ? 'greenBackground' : 'redBackground'
                 "
               >
                 {{ grade.gradeValue }}

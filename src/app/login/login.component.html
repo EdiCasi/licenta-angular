@@ -5,44 +5,57 @@
 >
   <mat-card fxFlex="28%">
     <mat-toolbar color="background">Login Page</mat-toolbar>
+    <div *ngIf="!forgotPassword">
+      <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+        <mat-form-field>
+          <mat-placeholder [ngClass]="emailNotGood ? 'error-placeholder' : ''"
+            >Email</mat-placeholder
+          >
+          <input [(ngModel)]="loginData.email" name="email" matInput />
+        </mat-form-field>
 
-    <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
-      <mat-form-field>
-        <mat-placeholder [ngClass]="emailNotGood ? 'error-placeholder' : ''"
-          >Email</mat-placeholder
+        <mat-form-field>
+          <mat-placeholder
+            [ngClass]="passwordNotGood ? 'error-placeholder' : ''"
+            >Password</mat-placeholder
+          >
+          <input
+            [(ngModel)]="loginData.password"
+            name="password"
+            matInput
+            type="password"
+            class="asd"
+          />
+        </mat-form-field>
+
+        <div *ngIf="errorMessage != ''">
+          <mat-error>{{ errorMessage }}</mat-error>
+        </div>
+
+        <button
+          (click)="loginUser()"
+          mat-raised-button
+          type="submit"
+          [disabled]="showLoading"
         >
-        <input [(ngModel)]="loginData.email" name="email" matInput />
-      </mat-form-field>
+          Login
+        </button>
+      </form>
 
-      <mat-form-field>
-        <mat-placeholder [ngClass]="passwordNotGood ? 'error-placeholder' : ''"
-          >Password</mat-placeholder
-        >
-        <input
-          [(ngModel)]="loginData.password"
-          name="password"
-          matInput
-          type="password"
-          class="asd"
-        />
-      </mat-form-field>
-
-      <div *ngIf="errorMessage != ''">
-        <mat-error>{{ errorMessage }}</mat-error>
+      <div class="forgor-password">
+        <a (click)="onForgorPassworClick()">Forgot Password?</a>
       </div>
+    </div>
 
-      <button
-        (click)="loginUser()"
-        mat-raised-button
-        type="submit"
-        [disabled]="showLoading"
-      >
-        Login
-      </button>
-    </form>
-
-    <div class="forgor-password">
-      <a href="">Forgot Password?</a>
+    <!-- Show forgot passowrd message -->
+    <div *ngIf="forgotPassword">
+      <p class="login-form">
+        In cazul in care parola a fost uitata, va rugam sa luati legatura cu
+        secretariatul scolii. Va multumim!
+      </p>
+      <div class="forgor-password">
+        <a (click)="onForgorPassworClick()">Inapoi la login</a>
+      </div>
     </div>
   </mat-card>
 </div>

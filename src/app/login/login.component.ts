@@ -20,6 +20,8 @@ export class LoginComponent {
   public emailNotGood;
   public loginData = { email: '', password: '' };
 
+  public forgotPassword: Boolean = false;
+
   constructor(private accountService: AccountService, private _router: Router) {
     this.showLoading = false;
     this.errorMessage = '';
@@ -37,7 +39,6 @@ export class LoginComponent {
     this.accountService.loginUser(this.loginData).subscribe(
       (response: Account) => {
         this.showLoading = false;
-        console.log(response);
 
         localStorage.setItem('user', JSON.stringify(response));
 
@@ -68,12 +69,6 @@ export class LoginComponent {
       return true;
     }
 
-    // if (!this.isPassword(this.loginData.password)) {
-    //   this.passwordNotGood = true;
-    //   this.errorMessage = 'Please enter a valid password.';
-    //   this.emailNotGood = false;
-    //   return true;
-    // }
     return false;
   }
 
@@ -82,5 +77,9 @@ export class LoginComponent {
   }
   public isPassword(password: string) {
     return password.match(this.passwordPattern);
+  }
+
+  onForgorPassworClick() {
+    this.forgotPassword = !this.forgotPassword;
   }
 }

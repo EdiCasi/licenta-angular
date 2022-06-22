@@ -22,9 +22,10 @@ button {
   height: max-content;
 }
 .cardValue {
-  width: 10%;
+  width: 8%;
   display: inline-block;
   margin-right: 2%;
+  text-align: center;
 }
 .cardDate {
   width: 88%;

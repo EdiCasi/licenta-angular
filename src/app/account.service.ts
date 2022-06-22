@@ -12,10 +12,6 @@ export class AccountService {
 
   constructor(private http: HttpClient) {}
 
-  public getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(`${this.apiServerUrl}/all`);
-  }
-
   public loginUser(user: any): Observable<Account> {
     return this.http.post<Account>(`${this.apiServerUrl}/login`, user);
   }
