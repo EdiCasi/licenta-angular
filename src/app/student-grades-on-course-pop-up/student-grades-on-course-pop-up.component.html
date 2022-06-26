@@ -1,12 +1,18 @@
 <div class="mainDiv">
   <div class="titleDiv">
-    <h1 mat-dialog-title>Media studentului: {{ average }}</h1>
+    <h1 mat-dialog-title>
+      Media studentului "{{ studentName.slice(0, 10) }}..": {{ average }}
+    </h1>
   </div>
 
   <div class="gradesDiv">
     <div class="gradeCard" *ngFor="let grade of studentGrades">
       <div class="cardValue">
-        <mat-card>
+        <mat-card
+          [ngClass]="
+            grade.gradeValue >= 5 ? 'greenBackground' : 'redBackground'
+          "
+        >
           {{ grade.gradeValue }}
         </mat-card>
       </div>

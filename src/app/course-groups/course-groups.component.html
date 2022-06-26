@@ -1,13 +1,30 @@
 <app-menu></app-menu>
 <div class="main">
-  <mat-card class="container informationDiv">
+  <mat-card class="container informationDiv" *ngIf="studentGroups.length != 0">
     Selectati o grupa pentru a putea vedea elevii:
+  </mat-card>
+
+  <mat-card
+    class="container informationDiv"
+    style="text-align: center"
+    *ngIf="studentGroups.length == 0"
+  >
+    Nu exista grupe asociate acestui curs, va rugam reveniti pe pagina
+    principala.
+    <button
+      mat-raised-button
+      [routerLink]="['/professorCourses', { editingEvents: editingEvents }]"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Inapoi
+    </button>
   </mat-card>
   <div *ngFor="let group of studentGroups" class="container">
     <div class="card-wrapper">
       <button
         *ngIf="!editingEvents"
         mat-raised-button
+        class="groupButton"
         [routerLink]="[
           '/modifyGrades',
           {
@@ -23,6 +40,7 @@
       <button
         *ngIf="editingEvents"
         mat-raised-button
+        class="groupButton"
         [routerLink]="[
           '/editingEvents',
           {

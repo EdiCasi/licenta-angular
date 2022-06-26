@@ -29,13 +29,11 @@ export class LoginComponent {
     this.emailNotGood = false;
   }
 
-  public loginUser(): void {
+  public loginUser() {
     if (this.verifyUserInput(this.loginData.email)) {
       return;
     }
-
     this.showLoading = true;
-
     this.accountService.loginUser(this.loginData).subscribe(
       (response: Account) => {
         this.showLoading = false;
@@ -45,21 +43,25 @@ export class LoginComponent {
         this._router.navigate(['/home']);
       },
       (error: HttpErrorResponse) => {
-        this.showLoading = false;
-        this.errorMessage = error.error;
-
-        if (this.errorMessage == 'The user was not found !') {
-          this.emailNotGood = true;
-        } else if (this.errorMessage == 'Incorrect password!') {
-          this.passwordNotGood = true;
-          this.emailNotGood = false;
-        } else {
-          this.passwordNotGood = false;
-          this.emailNotGood = false;
-        }
+        this.onLoginError(error.error);
         console.log(' === ERRORR: ' + JSON.stringify(error));
       }
     );
+  }
+
+  onLoginError(errorMessage: string) {
+    this.showLoading = false;
+    this.errorMessage = errorMessage;
+
+    if (this.errorMessage == 'The user was not found !') {
+      this.emailNotGood = true;
+    } else if (this.errorMessage == 'Incorrect password!') {
+      this.passwordNotGood = true;
+      this.emailNotGood = false;
+    } else {
+      this.passwordNotGood = false;
+      this.emailNotGood = false;
+    }
   }
 
   public verifyUserInput(loginData: any): Boolean {

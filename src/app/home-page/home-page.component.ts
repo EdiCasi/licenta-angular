@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
     );
   }
   private getProfessorEvents(professorId: number) {
-    this.eventService.getStudentEvents(professorId).subscribe(
+    this.eventService.getProfessorEvents(professorId).subscribe(
       (response: EventSummary[]) => {
         this.events = response;
       },

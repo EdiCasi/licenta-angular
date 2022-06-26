@@ -38,6 +38,7 @@ export class EditAccountPopUpComponent {
 
   onOkClick() {
     this.inputErrors = this.validateInput();
+    console.log('this.inputErrors: ' + this.inputErrors);
     if (!this.inputErrors) {
       if (this.accountIsInDatabase(this.account)) {
         this.modifyAccountInDatabase(this.accountToModify);
@@ -101,17 +102,15 @@ export class EditAccountPopUpComponent {
       alert('Va rugam sa completati toate campurile!');
       return true;
     }
-    if (
-      !this.accountToModify.email.match(this.emailPattern) &&
-      !this.accountIsInDatabase(this.account)
-    ) {
+    console.log(
+      ' !this.accountToModify.email.match(this.emailPattern): ' +
+        !this.accountToModify.email.match(this.emailPattern)
+    );
+    if (!this.accountToModify.email.match(this.emailPattern)) {
       alert('Va rugam introduceti un email valid!');
       return true;
     }
-    if (
-      !this.accountToModify.password.match(this.passwordPattern) &&
-      !this.accountIsInDatabase(this.account)
-    ) {
+    if (!this.accountToModify.password.match(this.passwordPattern)) {
       alert('Va rugam introduceti o parola valida!');
       return true;
     }

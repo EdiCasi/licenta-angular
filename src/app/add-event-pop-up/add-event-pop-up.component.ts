@@ -89,6 +89,8 @@ export class AddEventPopUpComponent implements OnInit {
         alert(
           'Evenimentul: ' + response.eventName + ' a fost adaugat cu succes!'
         );
+        var newEv = response;
+        newEv.eventDate = new Date(response.eventDate.toString().slice(0, 10));
         this.dialogRef.close(response);
       },
       (error: HttpErrorResponse) => {

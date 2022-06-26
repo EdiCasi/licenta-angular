@@ -4,12 +4,12 @@
   [ngClass]="showLoading == true ? 'main-div spinner_overlay' : 'main-div'"
 >
   <mat-card fxFlex="28%">
-    <mat-toolbar color="background">Login Page</mat-toolbar>
+    <mat-toolbar color="background">Autentificare</mat-toolbar>
     <div *ngIf="!forgotPassword">
       <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
         <mat-form-field>
           <mat-placeholder [ngClass]="emailNotGood ? 'error-placeholder' : ''"
-            >Email</mat-placeholder
+            >E-Mail</mat-placeholder
           >
           <input [(ngModel)]="loginData.email" name="email" matInput />
         </mat-form-field>
@@ -17,7 +17,7 @@
         <mat-form-field>
           <mat-placeholder
             [ngClass]="passwordNotGood ? 'error-placeholder' : ''"
-            >Password</mat-placeholder
+            >Parola</mat-placeholder
           >
           <input
             [(ngModel)]="loginData.password"
@@ -38,12 +38,12 @@
           type="submit"
           [disabled]="showLoading"
         >
-          Login
+          Conectare
         </button>
       </form>
 
       <div class="forgor-password">
-        <a (click)="onForgorPassworClick()">Forgot Password?</a>
+        <a (click)="onForgorPassworClick()">Ati uitat parola?</a>
       </div>
     </div>
 

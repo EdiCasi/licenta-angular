@@ -27,7 +27,6 @@
       <button mat-raised-button routerLink="/students" class="menuButton">
         Elevi
       </button>
-      <span *ngSwitchCase="professorType"></span>
     </span>
     <span *ngSwitchCase="professorType" class="card-wrapper">
       <button
@@ -79,11 +78,7 @@
         <mat-card-content>{{ event.eventDescription }}</mat-card-content>
       </mat-card>
     </div>
-    <button
-      mat-raised-button
-      routerLink="/studentsCalendar"
-      class="seeMoreButton"
-    >
+    <button mat-raised-button routerLink="/studentsCalendar" class="eventCard">
       Vezi mai multe evenimente
     </button>
   </div>

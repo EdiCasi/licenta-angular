@@ -1,7 +1,7 @@
 <div class="popUp">
   <h1 mat-dialog-title>
     <span *ngIf="!addUser"
-      >Acum modificati userul {{ accountToModify.userName }}</span
+      >Acum modificati userul {{ account.userName.slice(0, 7) }}..</span
     >
     <span *ngIf="addUser">Adaugare user</span>
   </h1>

@@ -33,6 +33,5 @@
   background-color: rgb(208, 247, 208);
 }
 .seeMoreButton {
-  width: 100%;
-  margin-bottom: 10px;
+  float: center;
 }

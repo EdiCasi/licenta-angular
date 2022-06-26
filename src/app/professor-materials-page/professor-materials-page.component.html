@@ -80,6 +80,18 @@
               *ngSwitchCase="'application/zip'"
               class="pdfDivElement pdfImage"
             />
+
+            <img
+              src="assets/images/winrar-icon.png"
+              *ngSwitchCase="'application/x-zip-compressed'"
+              class="pdfDivElement pdfImage"
+            />
+
+            <img
+              src="assets/images/winrar-icon.png"
+              *ngSwitchCase="'application/octet-stream'"
+              class="pdfDivElement pdfImage"
+            />
             <img
               src="assets/images/jpgIcon.png"
               *ngSwitchCase="'image/jpeg'"
@@ -91,6 +103,11 @@
               *ngSwitchCase="
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
               "
+              class="pdfDivElement pdfImage"
+            />
+            <img
+              src="assets/images/wordIcon.png"
+              *ngSwitchCase="'application/msword'"
               class="pdfDivElement pdfImage"
             />
             <img

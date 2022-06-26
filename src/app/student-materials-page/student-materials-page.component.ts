@@ -31,6 +31,7 @@ export class StudentMaterialsPageComponent implements OnInit {
     this.materrialService.getCourseMaterials(this.courseId).subscribe(
       (response: Material[]) => {
         this.materials = response;
+        console.log('RESPONSE: ' + JSON.stringify(response));
       },
       (error: HttpErrorResponse) => {
         console.log(
