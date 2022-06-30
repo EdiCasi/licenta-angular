@@ -78,7 +78,12 @@
         <mat-card-content>{{ event.eventDescription }}</mat-card-content>
       </mat-card>
     </div>
-    <button mat-raised-button routerLink="/studentsCalendar" class="eventCard">
+    <button
+      mat-raised-button
+      routerLink="/studentsCalendar"
+      class="eventCard"
+      *ngIf="loggedUser?.userType == studentType"
+    >
       Vezi mai multe evenimente
     </button>
   </div>

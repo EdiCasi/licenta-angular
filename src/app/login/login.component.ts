@@ -55,9 +55,11 @@ export class LoginComponent {
 
     if (this.errorMessage == 'The user was not found !') {
       this.emailNotGood = true;
+      this.errorMessage = 'Acest email nu exista in baza de date !';
     } else if (this.errorMessage == 'Incorrect password!') {
       this.passwordNotGood = true;
       this.emailNotGood = false;
+      this.errorMessage = 'Parola nu este corecta !';
     } else {
       this.passwordNotGood = false;
       this.emailNotGood = false;
@@ -67,10 +69,14 @@ export class LoginComponent {
   public verifyUserInput(loginData: any): Boolean {
     if (!this.isEmailAddress(this.loginData.email)) {
       this.emailNotGood = true;
-      this.errorMessage = 'Please enter a valid email.';
+      this.errorMessage = 'Va rugam introduceti un email valid.';
       return true;
     }
-
+    if (!this.isPassword(this.loginData.password)) {
+      this.passwordNotGood = true;
+      this.errorMessage = 'Va rugam introduceti o parola valida.';
+      return true;
+    }
     return false;
   }
 

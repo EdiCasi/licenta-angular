@@ -20,8 +20,8 @@ export class EditingEventsComponent implements OnInit {
   public today: string;
   public isEditing: Boolean = false;
 
-  public events: Event[];
-  public pastEvents: Event[];
+  public events: Event[] = [];
+  public pastEvents: Event[] = [];
 
   constructor(
     private eventService: EventService,
@@ -67,7 +67,7 @@ export class EditingEventsComponent implements OnInit {
   public getTodayDate() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
 
     var todayFormatted = yyyy + '-' + mm + '-' + dd;
@@ -82,10 +82,17 @@ export class EditingEventsComponent implements OnInit {
   }
 
   public openUpdateEventPopUp(event: Event) {
-    this.dialog.open(AddEventPopUpComponent, {
+    const dialogRef = this.dialog.open(AddEventPopUpComponent, {
       width: '400px',
       height: '500px',
       data: event,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        event.eventDate = result.eventDate;
+        event.eventName = result.eventName;
+        event.eventDescription = result.eventDescription;
+      }
     });
   }
 
@@ -120,10 +127,18 @@ export class EditingEventsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result == true) {
         this.deleteEventById(event.id);
-        // delete item from array too
+        var isDeleted = false;
         this.events = this.events?.filter(function (value) {
+          if (value == event) {
+            isDeleted = true;
+          }
           return value != event;
         });
+        if (!isDeleted) {
+          this.pastEvents = this.pastEvents?.filter(function (value) {
+            return value != event;
+          });
+        }
       }
     });
   }

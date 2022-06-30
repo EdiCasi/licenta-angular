@@ -52,7 +52,6 @@ export class EditAccountPopUpComponent {
     this.accountService.updateUser(account).subscribe(
       (response: Account) => {
         console.log('RESPONSE: ' + JSON.stringify(response));
-        //CLOSE THE DIALOG WITH TE MODIFIED USER
         this.dialogRef.close(response);
         alert('Userul: ' + response.userName + ' a fost modificat cu succes!');
       },
@@ -66,7 +65,6 @@ export class EditAccountPopUpComponent {
     this.accountService.addUser(account).subscribe(
       (response: Account) => {
         console.log('RESPONSE: ' + JSON.stringify(response));
-        //CLOSE THE DIALOG WITH ThE ADDED USER
         alert('Userul: ' + response.userName + ' a fost adaugat cu succes!');
 
         this.dialogRef.close(response);

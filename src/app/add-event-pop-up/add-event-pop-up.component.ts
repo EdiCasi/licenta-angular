@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DateAdapter } from '@angular/material/core';
 import { EventService } from '../event.service';
 import { Event } from '../event';
 
@@ -17,21 +16,19 @@ export class AddEventPopUpComponent implements OnInit {
   public newEventDate: Date;
   public today: Date;
   public isInsert: Boolean;
-  public courseId: number;
-  public groupId: number;
   public eventToUpdate: Event;
   constructor(
     public dialogRef: MatDialogRef<AddEventPopUpComponent>,
-    private dateAdapter: DateAdapter<Date>,
     private eventService: EventService,
     @Inject(MAT_DIALOG_DATA) public objectReceived: any
   ) {
-    this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
     this.isInsert = objectReceived.isInsert;
-    console.log('this.objectReceived: ' + JSON.stringify(objectReceived));
+
     if (this.isInsert) {
-      this.courseId = objectReceived.courseId;
-      this.groupId = objectReceived.groupId;
+      this.eventToUpdate = new Event();
+      this.eventToUpdate.courseId = objectReceived.courseId;
+      this.eventToUpdate.studentGroupId = objectReceived.groupId;
+      this.newEventDate = new Date();
     } else {
       this.eventToUpdate = objectReceived;
       this.newEventDate = this.eventToUpdate.eventDate;
@@ -41,30 +38,28 @@ export class AddEventPopUpComponent implements OnInit {
   }
   ngOnInit(): void {
     this.today = new Date();
-    this.newEventDate = new Date();
   }
 
-  onAddClick() {
+  onOkClick() {
     this.inputErrors = this.validateInput();
+
     if (!this.inputErrors) {
+      var event: Event = {
+        id: 0,
+        studentGroupId: this.eventToUpdate.studentGroupId,
+        courseId: this.eventToUpdate.courseId,
+        eventDate: this.isInsert
+          ? new Date(this.getFormattedDate(this.newEventDate))
+          : this.eventToUpdate.eventDate,
+        eventName: this.newEventName,
+        eventDescription: this.newEventDescription,
+      };
       if (this.isInsert) {
-        var event: Event = {
-          id: 0,
-          studentGroupId: this.groupId,
-          courseId: this.courseId,
-          eventDate: this.newEventDate,
-          eventName: this.newEventName,
-          eventDescription: this.newEventDescription,
-        };
         this.addEvent(event);
       } else {
-        this.eventToUpdate.eventName = this.newEventName;
-        this.eventToUpdate.eventDescription = this.newEventDescription;
-        this.eventToUpdate.eventDate = this.newEventDate;
-        console.log(
-          'this.eventToUpdate: ' + JSON.stringify(this.eventToUpdate)
-        );
-        this.updateEvent(this.eventToUpdate);
+        event.id = this.eventToUpdate.id;
+        console.log(event.id);
+        this.updateEvent(event);
       }
     }
   }
@@ -89,8 +84,6 @@ export class AddEventPopUpComponent implements OnInit {
         alert(
           'Evenimentul: ' + response.eventName + ' a fost adaugat cu succes!'
         );
-        var newEv = response;
-        newEv.eventDate = new Date(response.eventDate.toString().slice(0, 10));
         this.dialogRef.close(response);
       },
       (error: HttpErrorResponse) => {
@@ -120,5 +113,15 @@ export class AddEventPopUpComponent implements OnInit {
 
   onInputChange(): void {
     this.inputErrors = false;
+  }
+
+  public getFormattedDate(date: Date) {
+    console.log('Dta: ' + date);
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0');
+    var yyyy = date.getFullYear();
+
+    var formattedDate = yyyy + '-' + mm + '-' + dd + 'T06:00:00';
+    return formattedDate;
   }
 }

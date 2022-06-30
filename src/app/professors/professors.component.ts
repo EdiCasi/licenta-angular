@@ -73,7 +73,6 @@ export class ProfessorsComponent implements OnInit {
     });
   }
 
-  // DELETE
   public openDeleteProfessor(professor: Account) {
     const dialogRef = this.dialog.open(DeleteAccountPopUpComponent, {
       width: '300px',

@@ -88,7 +88,6 @@ export class SelectGroupPopUpComponent implements OnInit {
             ' a fost adaugat cu succes in grupa ' +
             selectedGroup
         );
-        // close dialog
         this.dialogRef.close(selectedGroup);
         console.log('RESPONSE: ' + JSON.stringify(response));
       },
@@ -107,7 +106,6 @@ export class SelectGroupPopUpComponent implements OnInit {
             ' a fost repartizat in grupa ' +
             selectedGroup
         );
-        // close dialog
         this.dialogRef.close(selectedGroup);
         console.log('RESPONSE: ' + JSON.stringify(response));
       },

@@ -21,8 +21,7 @@ export class AddGradePopUpComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public objectReceived: any,
     private dateAdapter: DateAdapter<Date>
   ) {
-    // for date picker to have the good format
-    this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
+    this.dateAdapter.setLocale('en-GB');
   }
 
   ngOnInit(): void {

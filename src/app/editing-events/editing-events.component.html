@@ -47,7 +47,9 @@
       >
         <div class="divLeft">
           <mat-card-title>{{ event.eventName }}</mat-card-title>
-          <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+          <mat-card-subtitle>{{
+            event.eventDate.toString().slice(0, 10)
+          }}</mat-card-subtitle>
           <mat-card-content>{{ event.eventDescription }}</mat-card-content>
         </div>
         <div class="divRight">
@@ -74,14 +76,15 @@
   </div>
 
   <br />
-  <br />
   <div class="container" *ngIf="pastEvents.length != 0">
     <h1 style="font-weight: bold">Evenimente trecute:</h1>
     <div *ngFor="let event of pastEvents" class="card-wrapper">
       <mat-card class="eventCard oldBackground">
         <div class="divLeft">
           <mat-card-title>{{ event.eventName }}</mat-card-title>
-          <mat-card-subtitle>{{ event.eventDate }}</mat-card-subtitle>
+          <mat-card-subtitle>{{
+            event.eventDate.toString().slice(0, 10)
+          }}</mat-card-subtitle>
           <mat-card-content>{{ event.eventDescription }}</mat-card-content>
         </div>
         <div class="divRight">

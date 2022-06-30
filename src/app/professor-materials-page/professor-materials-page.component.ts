@@ -109,7 +109,6 @@ export class ProfessorMaterialsPageComponent implements OnInit {
   public deleteMaterial(material: Material): void {
     this.materialService.deleteMaterial(material.id).subscribe(
       (response: any) => {
-        // delete item from array too
         this.materials = this.materials?.filter(function (value) {
           return value != material;
         });

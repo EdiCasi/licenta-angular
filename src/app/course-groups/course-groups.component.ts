@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./course-groups.component.css'],
 })
 export class CourseGroupsComponent implements OnInit {
-  public studentGroups: StudentGroup[];
+  public studentGroups: StudentGroup[] = [];
   public courseId: number;
   public editingEvents: boolean;
 

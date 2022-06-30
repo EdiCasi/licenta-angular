@@ -111,8 +111,6 @@ export class StudentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result != undefined) {
-        // add the new student in the table
-
         const tableData = this.dataSource.data;
         tableData.push(new Student(result, this.studentGroupName));
         this.dataSource.data = tableData;
@@ -141,7 +139,6 @@ export class StudentsComponent implements OnInit {
     );
   }
 
-  // DELETE
   public openDeleteStudent(student: Student) {
     const dialogRef = this.dialog.open(DeleteAccountPopUpComponent, {
       width: '300px',
@@ -171,13 +168,11 @@ export class StudentsComponent implements OnInit {
       console.log('The dialog was closed');
       if (studentGroupName != null) {
         if (this.ifGroupTab()) {
-          // don't show the student anymore because is not in the group
           const tableData = this.dataSource.data.filter(
             (item) => item !== student
           );
           this.dataSource.data = tableData;
         } else {
-          // update the student with the new group
           const tableData = this.dataSource.data;
           tableData.forEach((element) => {
             if (element.id == student.id) {

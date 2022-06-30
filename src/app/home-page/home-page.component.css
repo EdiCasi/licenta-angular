@@ -24,6 +24,7 @@
 }
 .event-card-wrapper {
   display: grid;
+  margin-right: 30px;
 }
 .eventCard {
   width: 100%;

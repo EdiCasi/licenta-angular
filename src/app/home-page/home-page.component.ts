@@ -38,7 +38,7 @@ export class HomePageComponent implements OnInit {
     }
   }
   private getStudentEvents(studentId: number) {
-    this.eventService.getStudentEvents(studentId).subscribe(
+    this.eventService.getStudentEventsLimit(studentId).subscribe(
       (response: EventSummary[]) => {
         this.events = response;
       },
@@ -60,7 +60,7 @@ export class HomePageComponent implements OnInit {
   public getTodayDate() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
 
     var todayFormatted = yyyy + '-' + mm + '-' + dd;
